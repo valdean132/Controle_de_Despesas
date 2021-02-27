@@ -25,10 +25,12 @@ body {
     width: 350px;
 }
 
-h1 {
+h2.balance {
     letter-spacing: 1px;
     margin: 0;
     color: #2e75cc;
+    font-size: 30px;
+    margin-top: 5px;
 }
 
 h3 {

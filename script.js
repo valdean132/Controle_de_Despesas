@@ -15,7 +15,7 @@ let transactions = localStorage
 
 const removeTransaction = ID =>{
     transactions = transactions.filter(transaction => 
-        transaction .id !== ID);
+        transaction.id !== ID);
     updateLocalStorage();
     init();
 }
@@ -69,7 +69,7 @@ const init = () =>{
 init();
 
 const updateLocalStorage = () => {
-    localStorage.setItem(' transactions', JSON.stringify(transactions));
+    localStorage.setItem('transactions', JSON.stringify(transactions));
 }
 
 const generateID = () => Math.round(Math.random() * 1000);

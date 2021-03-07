@@ -6,7 +6,7 @@
 }
 
 body {
-    background-color: var(--backgroundColor-one);
+    background-color: var(--backgroundColor-main);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -42,7 +42,7 @@ h4 {
 }
 
 .inc-exp-container {
-    background-color: var(--backgroundColor-two);
+    background-color: var(--backgroundColor-one);
     box-shadow: var(--box-shadow);
     padding: 20px;
     display: flex;
@@ -82,6 +82,8 @@ label {
 input[type='text'],
 input[type='number'] {
     border: var(--border-two);
+    background-color: var(--backgroundColor-four);
+    color: var(--color-three);
     border-radius: 5px;
     display: block;
     font-size: 16px;
@@ -100,7 +102,7 @@ input[type='number']:valid{
 }
 .btn {
     cursor: pointer;
-    background-color: var(--backgroundColor-three);
+    background-color: var(--backgroundColor-two);
     box-shadow: var(--box-shadow);
     border-radius: 5px;
     color: var(--color-three);
@@ -114,7 +116,7 @@ input[type='number']:valid{
 }
 .btn:hover,
 .btn:focus{
-    background-color: var(--backgroundColorHover-three);
+    background-color: var(--backgroundColorHover-two);
 }
 
 .transactions {
@@ -124,7 +126,7 @@ input[type='number']:valid{
 }
 
 .transactions li {
-    background-color: var(--backgroundColor-two);
+    background-color: var(--backgroundColor-one);
     box-shadow: var(--box-shadow);
     color: var(--color-two);
     display: flex;
@@ -145,7 +147,7 @@ input[type='number']:valid{
 
 .delete-btn {
     cursor: pointer;
-    background-color: var(--backgroundColor-four);
+    background-color: var(--backgroundColor-three);
     border: 0;
     color: var(--color-three);
     font-size: 20px;
@@ -164,5 +166,5 @@ input[type='number']:valid{
     opacity: 1;
 }
 .delete-btn:hover{
-    background-color: var(--backgroundColorHover-four);
+    background-color: var(--backgroundColorHover-three);
 }

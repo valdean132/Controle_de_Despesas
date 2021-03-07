@@ -17,3 +17,15 @@
     --border-one: 1px solid #bbb;
     --border-two: 1px solid #dedede;
 }
+
+::-webkit-scrollbar {
+    background-color: #202324;
+    /* color: #aba499; */
+    width: 12px;
+}
+::-webkit-scrollbar-corner {
+    /* background-color: #181a1b; */
+}
+::-webkit-scrollbar-thumb {
+    background-color: #454a4d;
+}

@@ -19,7 +19,8 @@ body {
 
 .container {
     margin: 30px auto;
-    width: 350px;
+    padding: 0 2%;
+    width: 500px;
 }
 
 h2.balance {
@@ -118,11 +119,22 @@ input[type='number']:valid{
 .btn:focus{
     background-color: var(--backgroundColorHover-two);
 }
-
+.entrada-saida{
+    width: 100%;
+    height: auto;
+    max-height: 250px;
+    background-color: #ccc;
+    margin-bottom: 40px;
+    border: var(--border-one);
+    background-color: var(--backgroundColor-four);
+    border-radius: 5px 0 0 5px;
+    overflow: auto;
+}
 .transactions {
+    width: 88%;
     list-style-type: none;
     padding: 0;
-    margin-bottom: 40px;
+    margin: 0 auto;
 }
 
 .transactions li {

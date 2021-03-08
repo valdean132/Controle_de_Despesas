@@ -83,7 +83,7 @@ input[type='text'],
 input[type='number'] {
     border: var(--border-two);
     background-color: var(--backgroundColor-four);
-    color: var(--color-three);
+    color: var(--color-four);
     border-radius: 5px;
     display: block;
     font-size: 16px;

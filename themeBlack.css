@@ -7,12 +7,13 @@
     --backgroundColor-two: rgb(29, 0, 178);
     --backgroundColorHover-two: rgb(29, 6, 143);
     --backgroundColor-three: rgb(162, 33, 20);
-    --backgroundColorHover-three: rgb(117, 24, 13);
+    --backgroundColorHover-three: rgb(150, 29, 16);
     --backgroundColor-four: rgb(24, 26, 27);
     --color-main: rgb(232, 230, 227);
     --color-one: rgb(99, 167, 220);
     --color-two: rgb(200, 195, 188);
     --color-three: #fff;
+    --color-four: #bbb;
     --color-plus: rgb(71, 213, 131);
     --color-minus: rgb(216, 92, 79);
     --border-one: 1px solid rgb(67, 73, 76);
@@ -20,13 +21,10 @@
 }
 
 ::-webkit-scrollbar {
-    background-color: #202324;
+    background-color: #323536;
     /* color: #aba499; */
     width: 12px;
 }
-::-webkit-scrollbar-corner {
-    /* background-color: #181a1b; */
-}
 ::-webkit-scrollbar-thumb {
-    background-color: #454a4d;
+    background-color: #5a6063;
 }

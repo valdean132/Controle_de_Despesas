@@ -12,6 +12,7 @@
     --color-one: #2e75cc;
     --color-two: #333;
     --color-three: #fff;
+    --color-four: #444;
     --color-plus: #2ecc71;
     --color-minus: #c0392b;
     --border-one: 1px solid #bbb;
@@ -19,13 +20,10 @@
 }
 
 ::-webkit-scrollbar {
-    background-color: #202324;
+    background-color: #d2d2d2;
     /* color: #aba499; */
     width: 12px;
 }
-::-webkit-scrollbar-corner {
-    /* background-color: #181a1b; */
-}
 ::-webkit-scrollbar-thumb {
-    background-color: #454a4d;
+    background-color: #a7a7a7;
 }

@@ -127,8 +127,15 @@ input[type='number']:valid{
     margin-bottom: 40px;
     border: var(--border-one);
     background-color: var(--backgroundColor-four);
-    border-radius: 5px 0 0 5px;
+    border-radius: 5px;
     overflow: auto;
+}
+.entrada-saida::-webkit-scrollbar{
+    width: 5px;
+    border-radius: 0px 3px 3px 0px;
+}
+.entrada-saida::-webkit-scrollbar-thumb{
+    border-radius: 3px;
 }
 .transactions {
     width: 88%;

@@ -135,7 +135,8 @@ input[type='number']:valid{
     background-color: transparent !important;
 }
 .entrada-saida::-webkit-scrollbar-thumb{
-    border-radius: 2pc;
+    /* width: 3px; */
+    border-radius: 2px;
 }
 .transactions {
     width: 88%;

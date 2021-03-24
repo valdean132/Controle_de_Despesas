@@ -1,0 +1,20 @@
+{
+  "name": "Controle_de_Despesas",
+  "version": "1.0.0",
+  "description": "Esse projeto é mais um estudo da qual foi ministrado pelo professor  Roger Melo pelo canal do YouTube",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/valdean132/Controle_de_Despesas.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/valdean132/Controle_de_Despesas/issues"
+  },
+  "homepage": "https://github.com/valdean132/Controle_de_Despesas#readme"
+}

@@ -1,0 +1,51 @@
+:root {
+
+    /* White */
+
+    --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 
+                  0 1px 2px rgba(0, 0, 0, 0.24);
+
+    --backgroundColor-main: #f7f7f7;
+    --backgroundColor-one: #fff;
+    --backgroundColor-two: #4e2bff;
+    --backgroundColorHover-two: #371eb3;
+    --backgroundColor-three: #e74c3c;
+    --backgroundColorHover-three: #c0392b;
+    --backgroundColor-four: #fff;
+    --color-main: #234;
+    --color-one: #2e75cc;
+    --color-two: #333;
+    --color-three: #fff;
+    --color-four: #444;
+    --color-plus: #2ecc71;
+    --color-minus: #c0392b;
+    --border-one: 1px solid #bbb;
+    --border-two: 1px solid #c7c5c5;
+    --scrollbar: #d2d2d2;
+    --scrollbar-thumb: #a7a7a7;
+
+    /* Dark */
+
+    --box-shadow-black: 0 1px 3px rgba(0, 0, 0, 0.22), 
+                        0 1px 2px rgba(0, 0, 0, 0.44);
+
+    --backgroundColor-main-black: rgb(23, 25, 26);
+    --backgroundColor-one-black: rgb(19, 21, 22);
+    --backgroundColor-two-black: rgb(29, 0, 178);
+    --backgroundColorHover-two-black: rgb(29, 6, 143);
+    --backgroundColor-three-black: rgb(162, 33, 20);
+    --backgroundColorHover-three-black: rgb(150, 29, 16);
+    --backgroundColor-four-black: rgb(24, 26, 27);
+    --color-main-black: rgb(232, 230, 227);
+    --color-one-black: rgb(99, 167, 220);
+    --color-two-black: rgb(200, 195, 188);
+    --color-three-black: #fff;
+    --color-four-black: #bbb;
+    --color-plus-black: rgb(71, 213, 131);
+    --color-minus-black: rgb(216, 92, 79);
+    --border-one-black: 1px solid rgb(67, 73, 76);
+    --border-two-black: 1px solid rgb(57, 62, 64);
+    --scrollbar-black: #323536;
+    --scrollbar-thumb-black: #5a6063;
+
+}

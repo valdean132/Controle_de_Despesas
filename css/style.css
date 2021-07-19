@@ -1,0 +1,388 @@
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+* {
+    box-sizing: border-box;
+    outline: none;
+}
+
+body {
+    background-color: var(--backgroundColor-main);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+    color: var(--color-main);
+    transition: background-color .5s, color .5s;
+}
+h2.title-geral{
+    position: absolute;
+    left: 50%;
+    top: -15px;
+    transform: translateX(-50%);
+}
+
+.container {
+    margin: 30px auto;
+    padding: 0 2%;
+    width: 100%;
+    max-width: 1080px;
+}
+.mian-RC{
+    width: 400px;
+    position: absolute;
+    top: 45px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+h2.balance {
+    letter-spacing: 1px;
+    margin: 0;
+    color: var(--color-one);
+    font-size: 30px;
+    margin-top: 5px;
+    text-align: center;
+    transition: color .5s;
+}
+
+h3 {
+    border-bottom: var(--border-one);
+    padding: 0 10px 5px;
+    margin: 40px 0 10px;
+    /* transition: color .5s; */
+}
+
+h4 {
+    text-align: center;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.inc-exp-container {
+    background-color: var(--backgroundColor-one);
+    box-shadow: var(--box-shadow);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+    border-radius: 5px;
+    transition: background-color .5s, box-shadow .5s;
+}
+
+.inc-exp-container > div {
+    flex: 1;
+    text-align: center;
+}
+
+.inc-exp-container > div:first-of-type {
+    border-right: var(--border-two);
+    transition: border-right .5s;
+}
+
+.money {
+    font-size: 20px;
+    letter-spacing: 1px;
+    margin: 5px 0;
+}
+
+.money.plus {
+    color: var(--color-plus);
+    transition: color .5s;
+}
+
+.money.minus {
+    color: var(--color-minus);
+    transition: color .5s;
+}
+
+.adcionar{
+    width: 350px;
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+label {
+    display: inline-block;
+    margin: 10px 0;
+}
+
+input[type='text'],
+input[type='number'] {
+    border: var(--border-two);
+    background-color: var(--backgroundColor-four);
+    color: var(--color-four);
+    border-radius: 5px;
+    display: block;
+    font-size: 16px;
+    padding: 10px;
+    width: 100%;
+    transition: border .5s ease;
+    transition: background-color .5s, color .2s, border .5s;
+}
+
+input[type='text']:focus,
+input[type='number']:focus{
+    border: 1px solid var(--color-one);
+    transition: border .5s;
+}
+input[type='text']:valid,
+input[type='number']:valid{
+    border: 1px solid var(--color-plus);
+    transition: border .5s;
+}
+.btn {
+    cursor: pointer;
+    background-color: var(--backgroundColor-two);
+    box-shadow: var(--box-shadow);
+    border-radius: 5px;
+    color: var(--color-three);
+    border: 0;
+    display: block;
+    font-size: 16px;
+    margin: 10px 0 30px;
+    padding: 10px;
+    width: 100%;
+    transition: background-color .5s, color .2s, box-shadow .5s;
+}
+.btn:hover,
+.btn:focus{
+    background-color: var(--backgroundColorHover-two);
+    transition: background-color .5s;
+}
+.transactions {
+    width: 88%;
+    list-style-type: none;
+    padding: 0;
+    margin: 0 auto;
+}
+.transacao{
+    width: 430px;
+    top: 160px;
+}
+.trans-entrada{
+    position: absolute;
+    left: 50px;
+}
+.trans-saida{
+    position: absolute;
+    right: 50px;
+}
+h3.transacao-title{
+    text-align: right;
+}
+#entrada, #saida{
+    height: auto;
+    max-height: 250px;
+    background-color: #ccc;
+    margin-bottom: 40px;
+    padding: 0 30px;
+    border: var(--border-one);
+    background-color: var(--backgroundColor-four);
+    border-radius: 5px;
+    overflow: auto;
+    transition: background-color .5s, border .5s;
+}
+#entrada::-webkit-scrollbar, #saida::-webkit-scrollbar{
+    width: 5px;
+    background-color: var(--scrollbar);
+    background-color: transparent !important;
+    transition: background-color .5s;
+}
+#entrada::-webkit-scrollbar-thumb, #saida::-webkit-scrollbar-thumb{
+    background-color: var(--scrollbar-thumb);
+    border-radius: 2px;
+    transition: background-color .5s;
+}
+.transactions li {
+    background-color: var(--backgroundColor-one);
+    box-shadow: var(--box-shadow);
+    color: var(--color-two);
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    transition: background-color .5s, color .2s, box-shadow .5s;
+}
+
+.transactions li.plus {
+    border-right: 5px solid var(--color-plus);
+    transition: .5s;
+}
+
+.transactions li.minus {
+    border-right: 5px solid var(--color-minus);
+    transition: .5s;
+}
+
+.delete-btn {
+    cursor: pointer;
+    background-color: var(--backgroundColor-three);
+    border: 0;
+    color: var(--color-three);
+    font-size: 20px;
+    line-height: 20px;
+    padding: 2px 5px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(-100%, -50%);
+    opacity: 0;
+    border-radius: 3px;
+    transition: 0.3s ease;
+}
+
+.transactions li:hover .delete-btn {
+    opacity: 1;
+}
+.delete-btn:hover{
+    background-color: var(--backgroundColorHover-three);
+}
+
+/* Icon Dark Mode */
+
+.btn-dark{
+    position: absolute;
+    top: 43%;
+    left: 50%;
+    transform: translate(-43%, -50%);
+    background-color: var(--color-one);
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    border-radius: 50%;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+
+    transition: .5s;
+}
+
+.btn-dark::before{
+    content: '\f185';
+    font-family: fontAwesome;
+    transition: .2s;
+    color: var(--color-three);
+}
+body.black .btn-dark::before{
+    content: '\f186';
+    transition: .2s;
+    color: var(--color-one-black);
+    transition: .5s;
+}
+
+body.black .btn-dark{
+    background-color: var(--scrollbar-black);
+    transition: .5s;
+}
+
+.btn-dark:hover{
+    width: 50px;
+    height: 50px;
+    font-size: 40px;
+}
+/* Theme Dark */
+body.black{
+    background-color: var(--backgroundColor-main-black);
+    color: var(--color-main-black);
+    transition: background-color .5s, color .5s;
+}
+body.black h2.balance{
+    color: var(--color-one-black);
+}
+body.black h3{
+    border-bottom: var(--border-one-black);
+    /* transition: color .5s; */
+}
+body.black .inc-exp-container {
+    background-color: var(--backgroundColor-one-black);
+    box-shadow: var(--box-shadow-black);
+    transition: background-color .5s, box-shadow .5s;
+}
+body.black .inc-exp-container > div:first-of-type {
+    border-right: var(--border-two-black);
+    transition: border-right .5s;
+}
+body.black .money.plus {
+    color: var(--color-plus-black);
+    transition: color .5s;
+}
+body.black .money.minus {
+    color: var(--color-minus-black);
+    transition: color .5s;
+}
+body.black input[type='text'],
+body.black input[type='number'] {
+    border: var(--border-two-black);
+    background-color: var(--backgroundColor-four-black);
+    color: var(--color-four-black);
+    transition: background-color .5s, color .2s, border .5s;
+}
+body.black input[type='text']:focus,
+body.black input[type='number']:focus{
+    border: 1px solid var(--color-one-black);
+    transition: border .5s;
+}
+body.black input[type='text']:valid,
+body.black input[type='number']:valid{
+    border: 1px solid var(--color-plus-black);
+    transition: border .5s;
+}
+body.black .btn {
+    cursor: pointer;
+    background-color: var(--backgroundColor-two-black);
+    box-shadow: var(--box-shadow-black);
+    border-radius: 5px;
+    color: var(--color-three-black);
+    transition: background-color .5s, color .2s, box-shadow .5s;
+}
+body.black .btn:hover,
+body.black .btn:focus{
+    background-color: var(--backgroundColorHover-two-black);
+    transition: background-color .5s;
+}
+body.black #entrada, 
+body.black #saida{
+    border: var(--border-one-black);
+    background-color: var(--backgroundColor-four-black);
+    transition: background-color .5s, border .5s;
+}
+body.black #entrada::-webkit-scrollbar, 
+body.black #saida::-webkit-scrollbar{
+    background-color: var(--scrollbar-black);
+    transition: background-color .5s;
+}
+body.black #entrada::-webkit-scrollbar-thumb, 
+body.black #saida::-webkit-scrollbar-thumb{
+    background-color: var(--scrollbar-thumb-black);
+    transition: background-color .5s;
+}
+body.black .transactions li {
+    background-color: var(--backgroundColor-one-black);
+    box-shadow: var(--box-shadow-black);
+    color: var(--color-two-black);
+    transition: background-color .5s, color .2s, box-shadow .5s;
+}
+body.black .transactions li.plus {
+    border-right: 5px solid var(--color-plus-black);
+    transition: .5s;
+}
+body.black .transactions li.minus {
+    border-right: 5px solid var(--color-minus-black);
+    transition: .5s;
+}
+body.black .delete-btn {
+    background-color: var(--backgroundColor-three-black);
+    color: var(--color-three-black);
+    transition: background-color .5s, color .2s
+}
+body.black .delete-btn:hover{
+    background-color: var(--backgroundColorHover-three-black);
+}

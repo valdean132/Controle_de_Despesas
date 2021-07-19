@@ -1,4 +1,6 @@
-const transactionsUl         =  document.querySelector("#transactions");
+// const transactionsUl         =  document.querySelector("#transactions");
+const transactionsUlEntrada  =  document.querySelector("#entrada");
+const transactionsUlSaida    =  document.querySelector("#saida");
 const incomeDisplay          =  document.querySelector("#money-plus");
 const expenseDisplay         =  document.querySelector("#money-minus");
 const balanceDisplay         =  document.querySelector("#balance");
@@ -14,7 +16,7 @@ let transactions = localStorage
     .getItem('transactions') !== null ? localStorageTransactions : []
 
 const removeTransaction = ID =>{
-    transactions = transactions.filter(transaction => 
+    transactions = transactions.filter(transaction =>
         transaction.id !== ID);
     
     updateLocalStorage();
@@ -34,7 +36,11 @@ const addTransactionIntoDOM = ({amount, name, id}) => {
         <span>${operator} R$ ${amountWithoutOperator}</span>
         <button class="delete-btn" onClick="removeTransaction(${id})">x</button>
     `;
-    transactionsUl.append(li);
+    if(CSSClass === 'plus'){
+        transactionsUlEntrada.append(li);
+    }else{
+        transactionsUlSaida.append(li);
+    }
 }
 
 const getExpenses = transactionsAmounts => Math.abs(transactionsAmounts
@@ -64,7 +70,8 @@ const uptateBalanceValues = () => {
 }
 
 const init = () =>{
-    transactionsUl.innerHTML = '';
+    transactionsUlEntrada.innerHTML = '';
+    transactionsUlSaida.innerHTML = '';
 
     transactions.forEach(addTransactionIntoDOM);
     uptateBalanceValues();

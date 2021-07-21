@@ -7,7 +7,17 @@ const balanceDisplay         =  document.querySelector("#balance");
 const form                   =  document.querySelector("#form");
 const inputTransactionName   =  document.querySelector("#text");
 const inputTransactionAmount =  document.querySelector("#amount");
+const confDeletTransactions  =  document.querySelector(".conf-sim");
 
+confDeletTransactions.addEventListener("click", () => {
+
+    localStorage.removeItem('transactions');
+
+    init();
+    setTimeout(()=>{
+        location.reload();
+    }, 3000);
+});
 
 const localStorageTransactions = JSON.parse(localStorage
     .getItem('transactions'));

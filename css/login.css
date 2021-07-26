@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+}
+
+.border{
+    border: 1px solid red;
+}
+
+body{
+    background-color: #1a237e;
+    background: linear-gradient(45deg, #1a237e, #0d47a1, #64b5f6);
+}
+
+main{
+    width: 100vw;
+    height: 100vh;
+}
+
+.div-box{
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    padding: 30px;
+    border-radius: 20px 0 20px 0;
+    background-color: #001e35;
+    box-shadow: 3px 2px 5px rgba(0, 0, 0, .5),
+                -2px 10px 5px rgba(0, 0, 0, .5);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.avatar-box{
+    position: absolute;
+    left: 50%;
+    top: -30px;
+    transform: translatex(-50%);
+    font-family: fontAwesome;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(45deg, #0d47a1, #90caf9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+
+}
+.avatar-box::before{
+    content: '\f2c0';
+    font-size: 30px;
+    color: #bdbdbd;
+}
+
+.title{
+    width: auto;
+    text-align: center;
+    color: white;
+    margin-top: 20px;
+    text-transform: uppercase;
+    width: 100%;
+}
+.title h2{
+    font-weight: 300;
+}
+
+/* Form */
+
+.box-form{
+    width: 100%;
+    margin: 10px 0;
+}
+.box-wrapper{
+    position: relative;
+    margin: 30px 0;
+    height: 30px;
+}
+.box-wrapper input{
+    border: 0;
+    outline: none;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border-bottom: 1px solid #ccc;
+    padding: 0 0 10px 10px;
+    font-size: 16px;
+    color: #ccc;
+    font-weight: 300;
+}
+.box-wrapper label{
+    user-select: none;
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-left: 10px;
+    color: #999;
+    font-weight: 300;
+    transition: top .5s, padding .5s, color .5s;
+}
+.box-wrapper label::after{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    content: '';
+    width: 0;
+    height: 1px;
+    background-color: #2196f3;
+    transition: width .5s, bottom .5s;
+}
+.box-wrapper input:focus ~ label,
+.box-wrapper input:valid ~ label{
+    top: -25px;
+    padding: 0;
+    color: white;
+}
+.box-wrapper input:focus ~ label::after,
+.box-wrapper input:valid ~ label::after{
+    bottom: -25px;
+    width: 100%;
+}
+.box-password .icon-showPassword{
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    top: 0;
+    right: 15px;
+    cursor: pointer;
+    font-family: fontAwesome;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+.box-password .icon-showPassword::before{
+    content: '\f070';
+    color: white;
+    font-weight: 300;
+    font-size: 20px;
+    transition: font-size .5s, content .5s;
+}
+.box-password .icon-showPassword.activePassword::before{
+    content: '\f06e';
+}
+.box-password .icon-showPassword:hover::before{
+    font-size: 25px;
+}
+.box-lembre{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    font-weight: 300;
+}
+.wrapper-lembre{
+    height: 30px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.wrapper-lembre input{
+    display: none;
+}
+.wrapper-lembre label{
+    color: #aaa;
+    cursor: pointer;
+}
+.wrapper-lembre .caixinha-box-input{
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    border-radius: 6px;
+    background-color: transparent;
+    border: 2px solid #fff;
+
+    position: relative;
+}
+.after-lembrete{
+    display: block;
+    position: absolute;
+    top: 80%;
+    left: 80%;
+    width: 8px;
+    height: 25px;
+    border-right: 0px solid #0f0;
+    border-bottom: 0px solid #0f0;
+    transform: translate(-80%,-80%);
+    transition: border-bottom-width .2s linear, border-right-width .2s linear, transform .2s linear;
+}
+.wrapper-lembre input[type=checkbox]:checked + label > .after-lembrete{
+    transform: translate(-80%,-80%) rotate(35deg);
+    /* display: block; */
+    border-right-width: 3px;
+    border-bottom-width: 3px;
+}
+.box-buttom{
+    width: 100%;
+    margin: 30px 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.box-buttom input{
+    width: 80%;
+    height: 40px;
+    outline: none;
+    border: 0;
+    font-size: 25px;
+    line-height: 40px;
+    border-radius: 8px;
+    background-color: #0d47a1;
+    color: #ddd;
+    cursor: pointer;
+    transition: background .5s;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, .5);
+}
+.box-buttom input:hover{
+    background-color: #0a3a83;
+}

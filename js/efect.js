@@ -72,3 +72,24 @@ boxConfSim.addEventListener("click", () => {
 });
 
 /* ** ** */
+
+
+/* 
+
+Chegar tema do sistema
+
+const prefersColorScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+function changeTheme(e){
+    if(e.matches){
+        console.log('So sistema é modo dark');
+    }else{
+        console.log('No sistema é modo light');
+    }
+};
+
+
+changeTheme(prefersColorScheme);
+
+
+*/

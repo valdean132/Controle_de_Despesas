@@ -93,7 +93,6 @@
                             $passwordValue = '';
                         }
                     }
-                    
                 }
             ?>
             <div class="div-form-valid" style="height: <?php echo $height; ?>">

@@ -16,19 +16,14 @@ if(classDarkModeNome !== null){
 btnDark.addEventListener("click", () => {
     if(body.classList == 'black'){
         localSttorageName = {nome: ''};
-        updateLocalStorageDark();
+        updateLocalStorage('classDark', localSttorageName);
         body.classList.remove('black');
     }else{
         localSttorageName = {nome: 'black'};
-        updateLocalStorageDark();
+        updateLocalStorage('classDark', localSttorageName);
         body.classList.add('black');
     }
 });
-
-
-const updateLocalStorageDark = () => {
-    localStorage.setItem('classDark', JSON.stringify(localSttorageName));
-}
 
 /* ** ** */
 

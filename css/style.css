@@ -1,8 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
-
-* {
-    box-sizing: border-box;
-    outline: none;
+.loggout{
+    position: relative;
+    top: 20px;
 }
 
 body {
@@ -13,14 +11,13 @@ body {
     justify-content: center;
     min-height: 100vh;
     margin: 0;
-    font-family: 'Lato', sans-serif;
     color: var(--color-main);
     transition: background-color .5s, color .5s;
 }
 h2.title-geral{
     position: absolute;
     left: 50%;
-    top: -15px;
+    top: 5px;
     transform: translateX(-50%);
 }
 

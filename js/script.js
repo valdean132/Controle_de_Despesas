@@ -29,7 +29,7 @@ const removeTransaction = ID =>{
     transactions = transactions.filter(transaction =>
         transaction.id !== ID);
     
-    updateLocalStorage();
+    updateLocalStorage('transactions', transactions);
     init();
 }
 
@@ -89,10 +89,6 @@ const init = () =>{
 
 init();
 
-const updateLocalStorage = () => {
-    localStorage.setItem('transactions', JSON.stringify(transactions));
-}
-
 const generateID = () => Math.round(Math.random() * 1000);
 
 const addToTransactionsArray = (transactionName, transactionAmount) => {
@@ -125,7 +121,7 @@ const handleFormSubmit = event => {
     addToTransactionsArray(transactionName, transactionAmount);
     
     init();
-    updateLocalStorage();
+    updateLocalStorage('transactions', transactions);
     cleanInputs();
     
 }

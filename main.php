@@ -41,6 +41,11 @@
     </div>
 
     <h2 class="title-geral">Controle de despesas</h2>
+    <?php
+        echo '<script>console.log("'.$_SESSION['themeMode'].'")</script>';
+    ?>
+    <h2 class="title-geral">
+    </h2>
     <div class="container">
         <div class="mian-RC">
             <h4>Saldo atual</h4>
@@ -87,7 +92,7 @@
                     </label>
                     <input type="number" id="amount" placeholder="Valor da transação" required autocomplete="off"/>
                 </div>
-
+                
                 <button class="btn">Adicionar</button>
             </form>
         </div>

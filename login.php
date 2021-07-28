@@ -52,7 +52,7 @@
                 $passwordValue = '';
                 if(isset($_POST['acao'])){
                     $user = $_POST['user'];
-                    $password = $_POST['password'];
+                    $password = base64_encode($_POST['password']);
                     if($user === '' && $password === ''){
                         $height = 'auto';
                         $boxAlert = Painel::boxMsg('error', 'Todos os campos devem ser preenchidos!!!');
@@ -61,31 +61,23 @@
                     }else{
                         $sql = MySql::conectar() -> prepare("SELECT * FROM `tb.control_user` WHERE user = ? AND password = ?");
                         $sql->execute(array($user, $password));
-
                         if($sql->rowCount() == 1){
                             $info = $sql->fetch();
-
-                            if($password === $info['password']){
-                                $_SESSION['login'] = true;
-                                $_SESSION['user'] = $user;
-                                $_SESSION['password'] = $password;
-                                $_SESSION['cargo'] = $info['cargo']; 
-                                $_SESSION['nome'] = $info['nome'];
-                                $_SESSION['img'] = $info['img'];
-                                $_SESSION['themeMode'] = $info['themeMode'];
-                                if(isset($_POST['lembrarConexao'])){
-                                    setcookie('lembrarConexao', true, time()+(60*60*24), '/');
-                                    setcookie('user', $user, time()+(60*60*24), '/');
-                                    setcookie('password', $password, time()+(60*60*24), '/');
-                                }
-                                header('Location: '.INCLUDE_PATH);
-                                die();
-                            }else{
-                                $height = 'auto';
-                                $boxAlert = Painel::boxMsg('error', 'Usuário ou Senha Incorretos!!!', 'Tente novamente');
-                                $userValue = $user;
-                                $passwordValue = '';
+                            
+                            $_SESSION['login'] = true;
+                            $_SESSION['user'] = $user;
+                            $_SESSION['password'] = $password;
+                            $_SESSION['cargo'] = $info['cargo']; 
+                            $_SESSION['nome'] = $info['nome'];
+                            $_SESSION['img'] = $info['img'];
+                            $_SESSION['themeMode'] = $info['themeMode'];
+                            if(isset($_POST['lembrarConexao'])){
+                                setcookie('lembrarConexao', true, time()+(60*60*24), '/');
+                                setcookie('user', $user, time()+(60*60*24), '/');
+                                setcookie('password', $password, time()+(60*60*24), '/');
                             }
+                            header('Location: '.INCLUDE_PATH);
+                            die();
                         }else{
                             $height = 'auto';
                             $boxAlert = Painel::boxMsg('error', 'Usuário ou Senha Incorretos!!!', 'Tente novamente');

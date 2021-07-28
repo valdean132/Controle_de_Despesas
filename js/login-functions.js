@@ -44,7 +44,7 @@ $(function(){
     let rememberUserStorege = localStorage.getItem('rememberUser');
     let rememberUserJson = JSON.parse(rememberUserStorege);
 
-    console.log(JSON.parse(rememberUserStorege))
+    // console.log(JSON.parse(rememberUserStorege))
 
     if(rememberUserJson !== null){
         if(rememberUserJson.checkedRemember === true){

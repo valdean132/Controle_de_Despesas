@@ -63,29 +63,181 @@
     content: '\f00c';
 }
 
+/* Icons main dark and loggout */
+
+.icons-main{
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* background-color: red; */
+}
+.loggout{
+    top: 30px;
+    right: 30px;
+}
+.icons-dark{
+    bottom: 30px;
+    right: 30px;
+}
+
+.btn-dark, .loggout a{
+    background-color: var(--color-one);
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    border-radius: 50%;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+
+    transition: .5s;
+
+}
+.loggout a{
+    text-decoration: none;
+    font-size: 25px;
+}
+/* BTN - Dark */
+
+.btn-dark::before, .loggout a::before{
+    font-family: fontAwesome;
+    transition: .2s;
+    color: var(--color-three);
+}
+body.black .btn-dark::before, body.black .loggout a::before{
+    transition: .2s;
+    color: var(--color-one-black);
+    transition: .5s;
+}
+.loggout a::before{
+    content: '\f08b';
+}
+.btn-dark::before{
+    content: '\f185';
+}
+body.black .btn-dark::before{
+    content: '\f186';
+}
+
+body.black .btn-dark, body.black .loggout a{
+    background-color: var(--scrollbar-black);
+    transition: .5s;
+}
+
+.btn-dark:hover, .loggout a:hover{
+    width: 50px;
+    height: 50px;
+    font-size: 40px;
+}
+.loggout a:hover{
+    font-size: 35px;
+}
+
+
+/* Menu Container */
+.menu-container{
+    position: fixed;
+    z-index: 20000;
+    left: 50px;
+    top: 30px;
+    width: 150px;
+    height: 350px;
+    border-radius: 10px;
+}
+.btn-menu{
+    width: 50px;
+    height: 50px;
+    position: relative;
+    top: 0;
+    left: 0;
+    
+    background-color: var(--color-one);
+
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    cursor: pointer;
+
+    transition: transform .5s, border-radius .5s, width .5s;
+}
+.btn-menu h2{
+    display: none;
+    color: var(--color-three);
+}
+.barrinhas-menu{
+    
+}
+.btn-menu span{
+    position: absolute;
+    width: 35px;
+    height: 5px;
+    border-radius: 10px;
+    background-color: var(--color-three);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform .5s, left .5s, opacity 1s, top .5s;
+}
+.btn-menu span.after{
+    top: 12px;
+}
+.btn-menu span.before{
+    top: 34px;
+}
+.btn-menu.active{
+    width: 100%;
+    border-radius: 10px;
+}
+.btn-menu.active h2{
+    display: block;
+}
+.btn-menu.active span{
+    left: 10px;
+}
+.btn-menu.active span.geral{
+    left: 100px;
+    opacity: 0;
+}
+.btn-menu.active span.after{
+    top: 24px;
+    transform: rotate(45deg);
+}
+.btn-menu.active span.before{
+    top: 24px;
+    transform: rotate(-45deg);
+}
+/* Amimate */
+
 @keyframes shake {
-from, to {
-    transform: translate3d(0, 0, 0);
-}
+    from, to {
+        transform: translate3d(0, 0, 0);
+    }
 
-10%, 30%, 50%, 70%, 90% {
-    transform: translate3d(-10px, 0, 0);
-}
+    10%, 30%, 50%, 70%, 90% {
+        transform: translate3d(-10px, 0, 0);
+    }
 
-20%, 40%, 60%, 80% {
-    transform: translate3d(10px, 0, 0);
-}
+    20%, 40%, 60%, 80% {
+        transform: translate3d(10px, 0, 0);
+    }
 }
 @keyframes shakeTop {
-from, to {
-    transform: translate3d(0, 0, 0);
-}
+    from, to {
+        transform: translate3d(0, 0, 0);
+    }
 
-10%, 30%, 50%, 70%, 90% {
-    transform: translate3d(0, -10px, 0);
-}
+    10%, 30%, 50%, 70%, 90% {
+        transform: translate3d(0, -10px, 0);
+    }
 
-20%, 40%, 60%, 80% {
-    transform: translate3d(0, 10px, 0);
-}
+    20%, 40%, 60%, 80% {
+        transform: translate3d(0, 10px, 0);
+    }
 }

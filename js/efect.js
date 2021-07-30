@@ -68,7 +68,6 @@ boxConfSim.addEventListener("click", () => {
 
 /* ** ** */
 
-
 /* 
 
 Chegar tema do sistema
@@ -88,3 +87,4 @@ changeTheme(prefersColorScheme);
 
 
 */
+

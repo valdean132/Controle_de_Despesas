@@ -25,14 +25,14 @@
         public static function loadPage(){
             if(isset($_GET['url'])){
                 $url= explode('/', $_GET['url']);
-                if(file_exists('page/'.$url[0].'.php')){
-                    include('pages/'.$url[1].'.php');
+                if(file_exists('pages/'.$url[0].'.php')){
+                    return('pages/'.$url[0].'.php');
                 }else{
                     // Quando a página não existe
-                    include('pages/404.php');
+                    return('pages/404.php');
                 }
             }else{
-                if('pages/home.php');
+                return('pages/home.php');
             }
         }
     }

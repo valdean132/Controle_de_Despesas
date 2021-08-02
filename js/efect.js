@@ -27,6 +27,42 @@ btnDark.addEventListener("click", () => {
 
 /* ** ** */
 
+/* * * Menu Show * * */
+
+const boxMenu = $('.menu-container');
+const amberMenu = $('.barrinhas-menu');
+
+amberMenu.click(()=>{
+    if(boxMenu.hasClass('active')){
+        boxMenu.removeClass('active');
+    }else{
+        boxMenu.addClass('active');
+    }
+});
+
+
+
+/* ** ** */
+
+/* 
+
+Chegar tema do sistema
+
+const prefersColorScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+function changeTheme(e){
+    if(e.matches){
+        console.log('So sistema é modo dark');
+    }else{
+        console.log('No sistema é modo light');
+    }
+};
+
+
+changeTheme(prefersColorScheme);
+
+
+*/
 
 /* * * Btn Delet * * */
 
@@ -67,24 +103,3 @@ boxConfSim.addEventListener("click", () => {
 });
 
 /* ** ** */
-
-/* 
-
-Chegar tema do sistema
-
-const prefersColorScheme = window.matchMedia('(prefers-color-scheme: dark)');
-
-function changeTheme(e){
-    if(e.matches){
-        console.log('So sistema é modo dark');
-    }else{
-        console.log('No sistema é modo light');
-    }
-};
-
-
-changeTheme(prefersColorScheme);
-
-
-*/
-

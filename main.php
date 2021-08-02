@@ -23,17 +23,24 @@
 </head>
 <body class="">
 
-    <div class="menu-container border">
+    <div class="menu-container">
         <div class="btn-menu">
             <div class="barrinhas-menu">
-                <span class="geral"></span>
-                <span class="after"></span>
-                <span class="before"></span>
+                <span class="barra-before"></span>
+                <span class="barra-center"></span>
+                <span class="barra-after"></span>
             </div>
             <h2>
                 Menu
             </h2>
         </div><!-- btn-menu -->
+        <nav>
+            <ul>
+                <li><a href="<?php echo INCLUDE_PATH; ?>editar-usuario"><i class=" fa fa-pencil-square-o"></i>Ed. Usuário</a></li>
+                <li><a href="aaaa"><i class=" fa fa-address-card-o"></i>Menu 2</a></li>
+                <li><a href="aaaa"><i class=" fa fa-address-card-o"></i>Menu 3</a></li>
+            </ul>
+        </nav>
     </div><!-- Menu Container -->
 
     <div class="icons-main loggout">

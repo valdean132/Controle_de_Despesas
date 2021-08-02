@@ -17,9 +17,6 @@
     </div>
 
     <h2 class="title-geral">Controle de despesas</h2>
-    <?php
-        echo '<script>console.log("'.$_SESSION['themeMode'].'")</script>';
-    ?>
     <h2 class="title-geral">
     </h2>
     <div class="container">

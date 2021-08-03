@@ -44,6 +44,38 @@ amberMenu.click(()=>{
 
 /* ** ** */
 
+
+/* * * Menu Show * * */
+
+
+
+dynamicLoading();
+
+function dynamicLoading(){
+    const containerCenter = $('.container-center');
+    $('[realtime]').click(function(){
+        var pagina = $(this).attr('realtime');
+
+        let url = include_path+'pages/'+pagina+'.php';
+        containerCenter.hide();
+        
+        containerCenter.load(url);
+        
+
+        if(pagina !== 'home'){
+            window.history.pushState('', '', pagina);
+        }else{
+            window.history.pushState('', '', include_path);
+        }
+        boxMenu.removeClass('active');
+        containerCenter.fadeIn(200);
+
+        return false;
+    });
+}
+
+/* ** ** */
+
 /* 
 
 Chegar tema do sistema
@@ -66,40 +98,44 @@ changeTheme(prefersColorScheme);
 
 /* * * Btn Delet * * */
 
-const btnDelet      = document.querySelector('.delete-control');
-const boxConfDelete = document.querySelector('.box-delete');
-const boxConfNao    = document.querySelector('.conf-nao');
-const boxConfSim    = document.querySelector('.conf-sim');
-const boxMgsConf    = document.querySelector('.box-msg-conf');
+// deleteControlDep();
 
-btnDelet.addEventListener("click", () => {
-    boxConfDelete.style.display = 'flex';
-    setTimeout(()=>{
-        boxConfDelete.style.opacity = '1';
-    }, 500);
-});
+// function deleteControlDep(){
+//     const btnDelet      = document.querySelector('.delete-control');
+//     const boxConfDelete = document.querySelector('.box-delete');
+//     const boxConfNao    = document.querySelector('.conf-nao');
+//     const boxConfSim    = document.querySelector('.conf-sim');
+//     const boxMgsConf    = document.querySelector('.box-msg-conf');
 
-boxConfDelete.addEventListener("click", e =>{
-    e.preventDefault();
+//     btnDelet.addEventListener("click", () => {
+//         boxConfDelete.style.display = 'flex';
+//         setTimeout(()=>{
+//             boxConfDelete.style.opacity = '1';
+//         }, 500);
+//     });
 
-    const box_delete = e.target.classList == 'box-delete';
-    const conf_nao   = e.target.classList == 'cont-btn-wraper conf-nao';
-    const conf_sim   = e.target.classList == 'cont-btn-wraper conf-sim';
+//     boxConfDelete.addEventListener("click", e =>{
+//         e.preventDefault();
 
-    if(box_delete || conf_nao || conf_sim){
-        boxConfDelete.style.opacity = '0';
+//         const box_delete = e.target.classList == 'box-delete';
+//         const conf_nao   = e.target.classList == 'cont-btn-wraper conf-nao';
+//         const conf_sim   = e.target.classList == 'cont-btn-wraper conf-sim';
 
-        setTimeout(()=>{
-            boxConfDelete.style.display = 'none';
-        }, 500);
-    }
-});
+//         if(box_delete || conf_nao || conf_sim){
+//             boxConfDelete.style.opacity = '0';
 
-boxConfSim.addEventListener("click", () => {
-    boxMgsConf.style.display = 'flex';
-    setTimeout(()=>{
-        boxMgsConf.style.opacity = '1';
-    }, 500);
-});
+//             setTimeout(()=>{
+//                 boxConfDelete.style.display = 'none';
+//             }, 500);
+//         }
+//     });
+
+//     boxConfSim.addEventListener("click", () => {
+//         boxMgsConf.style.display = 'flex';
+//         setTimeout(()=>{
+//             boxMgsConf.style.opacity = '1';
+//         }, 500);
+//     });
+// }
 
 /* ** ** */

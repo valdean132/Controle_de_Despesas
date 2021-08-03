@@ -8,6 +8,16 @@
     font-family: 'Lato', sans-serif;
 }
 
+body{
+    background-color: var(--backgroundColor-main);
+    color: var(--color-main);
+    transition: background-color .5s, color .5s;
+}
+body.black{
+    background-color: var(--backgroundColor-main-black);
+    color: var(--color-main-black);
+    transition: background-color .5s, color .5s;
+}
 .border{
     border: 1px solid red;
 }

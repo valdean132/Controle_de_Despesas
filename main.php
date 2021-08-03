@@ -4,7 +4,6 @@
     }
     $pageAtual = Painel::loadPage();
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -22,7 +21,7 @@
     <title>Controle de despesas</title>
 </head>
 <body class="">
-
+    <base base="<?php echo INCLUDE_PATH; ?>">
     <div class="menu-container">
         <div class="btn-menu">
             <div class="barrinhas-menu">
@@ -36,9 +35,9 @@
         </div><!-- btn-menu -->
         <nav>
             <ul>
-                <li><a href="<?php echo INCLUDE_PATH; ?>editar-usuario"><i class=" fa fa-pencil-square-o"></i>Ed. Usuário</a></li>
-                <li><a href="aaaa"><i class=" fa fa-address-card-o"></i>Menu 2</a></li>
-                <li><a href="aaaa"><i class=" fa fa-address-card-o"></i>Menu 3</a></li>
+                <li><a realtime='perfil' href="<?php echo INCLUDE_PATH; ?>perfil"><i class=" fa fa-pencil-square-o"></i>Perfil</a></li>
+                <li><a realtime='home' href="<?php echo INCLUDE_PATH; ?>"><i class=" fa fa-address-card-o"></i>Menu 2</a></li>
+                <li><a realtime='' href="aaaa"><i class=" fa fa-address-card-o"></i>Menu 3</a></li>
             </ul>
         </nav>
     </div><!-- Menu Container -->
@@ -52,12 +51,31 @@
 
     
     <div class="container-center">
-        <?php include($pageAtual) ?>
+        <?php 
+            include($pageAtual);
+        ?>
+        
     </div>
 
     <script src="<?php echo INCLUDE_PATH; ?>js/jquery.min.js"></script>
     <script src="<?php echo INCLUDE_PATH; ?>js/functions.js"></script>
-    <script src="<?php echo INCLUDE_PATH; ?>js/script.js"></script>
-    <script src="<?php echo INCLUDE_PATH; ?>js/efect.js"></script>
+    <script>
+        
+        setInterval(()=>{
+            var url_atual = window.location.href;
+            
+            if(url_atual === 'http://localhost/Controle_de_Despesas/'){
+                
+                if(!$('style,link[href="<?php echo INCLUDE_PATH; ?>css/home.css"]').length){
+                    
+                    $('style,link[href="<?php echo INCLUDE_PATH; ?>css/main.css"]').after('<link rel="stylesheet" href="<?php echo INCLUDE_PATH; ?>css/home.css">');
+                }
+            }else{
+                $('style,link[href="<?php echo INCLUDE_PATH; ?>css/home.css"]').remove();
+            }
+        });
+    </script>
+        <!-- <script src="<?php echo INCLUDE_PATH; ?>js/script.js"></script> -->
+        <script src="<?php echo INCLUDE_PATH; ?>js/efect.js"></script>
 </body>
 </html>

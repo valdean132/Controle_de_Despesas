@@ -1,4 +1,7 @@
 
+/* Const */
+var include_path = $('base').attr('base');
+
 /* LocalStorage */
 
 const updateLocalStorage = (key, value) => {

@@ -1,6 +1,4 @@
-controlDesp();
 
-function controlDesp(){
     // const transactionsUl         =  document.querySelector("#transactions");
 const transactionsUlEntrada  =  document.querySelector("#entrada");
 const transactionsUlSaida    =  document.querySelector("#saida");
@@ -130,4 +128,4 @@ const handleFormSubmit = event => {
 }
 
 form.addEventListener('submit', handleFormSubmit);
-}
+

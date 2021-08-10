@@ -20,7 +20,7 @@
     <link rel="sortcut icon" href="financeiro.ico" type="image/x-icon" />
     <title>Controle de despesas</title>
 </head>
-<body class="">
+<body>
     <base base="<?php echo INCLUDE_PATH; ?>">
     <div class="menu-container">
         <div class="btn-menu">
@@ -48,7 +48,13 @@
     <div class="icons-main icons-dark">
         <div class="btn-dark"></div><!-- Btn Dark -->
     </div><!-- Icon Darck -->
-
+    
+    <div class="load-container">
+        <div class="centerload">
+            <div class="bool-1"></div>
+            <div class="bool-2"></div>
+        </div>
+    </div><!-- Carregamento de Página -->
     
     <div class="container-center">
         <?php 
@@ -58,6 +64,9 @@
     </div>
 
     <script src="<?php echo INCLUDE_PATH; ?>js/jquery.min.js"></script>
+    <script>
+        
+    </script>
     <script src="<?php echo INCLUDE_PATH; ?>js/functions.js"></script>
     <script>
         setInterval(()=>{

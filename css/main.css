@@ -73,6 +73,74 @@ body.black{
     content: '\f00c';
 }
 
+/* Loading */
+.load-container{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 20000000000000000000;
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+    background-color: rgba(255, 255, 255, .5);
+    /* opacity: 0; */
+    /* display: none; */
+    transition: background .5s;
+}
+.centerload{
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border-radius: 50%;
+    filter: blur(10px) contrast(20);
+}
+.bool-1, .bool-2{
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.bool-1{
+    left: 20%;
+    background-color: rgb(32, 32, 32);
+    animation: osc-l 2.5s ease infinite;
+}
+.bool-2{
+    left: 80%;
+    animation: osc-r 2.5s ease infinite;
+    background-color: rgb(0, 255, 170);
+}
+
+body.black .load-container{
+    background-color: rgba(0, 0, 0, .5);
+}
+body.black .centerload{
+    background-color: #000;
+}
+body.black .bool-1{
+    background-color: rgb(214, 214, 214);
+}
+body.black .bool-2{
+    background-color: #0ff;
+}
+@keyframes osc-l {
+    0%{left: 20%;}
+    50%{left: 50%;}
+    100%{left: 20%;}
+}
+@keyframes osc-r {
+    0%{left: 80%;}
+    50%{left: 50%;}
+    100%{left: 80%;}
+}
+/* ** */
+
 /* Icons main dark and loggout */
 
 .icons-main{

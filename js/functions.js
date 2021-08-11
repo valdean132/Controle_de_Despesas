@@ -62,6 +62,35 @@ function Chr(AsciiNum){
 
 /* ** */
 
+/* * * Efect Relogio * * */
+
+function load(oc){
+    if(oc == 1){
+        const mElement = document.querySelector('.encaixe_m');
+        const hElement = document.querySelector('.encaixe_p');
+
+        const updateClock = () =>{
+            let now = new Date();
+            let hour = now.getSeconds();
+            let minute = now.getSeconds();
+
+            let mDeg = ((360/12) * minute) * 5;
+            let hDeg = ((360/60) * hour) * 5;
+
+            mElement.style.transform = `rotate(${mDeg}deg)`;
+            hElement.style.transform = `rotate(${hDeg}deg)`;
+            
+        }
+
+        setInterval(updateClock, 500);
+        updateClock();
+    }
+}
+
+load(1);
+/* ** ** */
+
+
 $(document).ready(function(){
     $('.load-container').css('opacity', '0');
     

@@ -86,21 +86,42 @@ h4 {
     transition: color .5s;
 }
 
+
+.pupup-adcionar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 20000000000000000000;
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+    background-color: rgba(0, 0, 0, .1);
+    /* display: none; */
+}
+
+
 .adcionar{
     width: 350px;
     position: absolute;
-    bottom: 0px;
     left: 50%;
-    transform: translateX(-50%);
+    top: 50%;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+    transform: translate(-50%, -50%);
+    display: block;
+    background-color: var(--backgroundColor-main);
 }
+/* .adcionar form{
 
+} */
 label {
     display: inline-block;
     margin: 10px 0;
 }
 
-input[type='text'],
-input[type='number'] {
+.adcionar input{
     border: var(--border-two);
     background-color: var(--backgroundColor-four);
     color: var(--color-four);
@@ -113,13 +134,11 @@ input[type='number'] {
     transition: background-color .5s, color .2s, border .5s;
 }
 
-input[type='text']:focus,
-input[type='number']:focus{
+.adcionar input:focus{
     border: 1px solid var(--color-one);
     transition: border .5s;
 }
-input[type='text']:valid,
-input[type='number']:valid{
+.adcionar input:valid{
     border: 1px solid var(--color-plus);
     transition: border .5s;
 }
@@ -137,8 +156,18 @@ input[type='number']:valid{
     width: 100%;
     transition: background-color .5s, color .2s, box-shadow .5s;
 }
-.btn:hover,
-.btn:focus{
+
+.abrir-transations{
+    position: absolute;
+    width: 250px;
+    height: 40px;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    text-transform: uppercase;
+}
+
+.btn:hover{
     background-color: var(--backgroundColorHover-two);
     transition: background-color .5s;
 }
@@ -378,6 +407,13 @@ body.black .delete-control{
     color: var(--color-three-black);
 }
 /* Theme Dark */
+body.black .pupup-adcionar{
+    background-color: rgba(0, 0, 0, .1);
+}
+body.black .adcionar{
+    background-color: var(--backgroundColor-main-black);
+    box-shadow: var(--box-shadow-black);
+}
 body.black .box-delete{
     -webkit-backdrop-filter: blur(2px); /* Safari 9+ */
     backdrop-filter: blur(2px); /* Chrome and Opera */
@@ -424,20 +460,17 @@ body.black .money.minus {
     color: var(--color-minus-black);
     transition: color .5s;
 }
-body.black input[type='text'],
-body.black input[type='number'] {
+body.black .adcionar input{
     border: var(--border-two-black);
     background-color: var(--backgroundColor-four-black);
     color: var(--color-four-black);
     transition: background-color .5s, color .2s, border .5s;
 }
-body.black input[type='text']:focus,
-body.black input[type='number']:focus{
+body.black .adcionar input:focus{
     border: 1px solid var(--color-one-black);
     transition: border .5s;
 }
-body.black input[type='text']:valid,
-body.black input[type='number']:valid{
+body.black .adcionar input:valid{
     border: 1px solid var(--color-plus-black);
     transition: border .5s;
 }

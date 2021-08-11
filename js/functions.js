@@ -96,7 +96,7 @@ $(document).ready(function(){
     
     setTimeout(()=>{
         $('.load-container').css('display', 'none');
-        load(0)
+        load(0);
     }, 500);
 
 });

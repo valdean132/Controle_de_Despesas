@@ -49,24 +49,48 @@
         </ul>
     </div>
     
+    <button class="btn abrir-transations">
+        Adicionar Transação
+    </button>
 
-    <div class="adcionar">
-        <h3>Adicionar transação</h3>
+    <div class="pupup-adcionar">
+        <div class="adcionar">
+            <h3>Adicionar transação</h3>
 
-        <form id="form">
-            <div class="form-control">
-                <label for="text">Nome</label>
-                <input autofocus type="text" id="text" placeholder="Nome da transação" required autofocus autocomplete="off"/>
-            </div>
+            <form id="form">
 
-            <div class="form-control">
-                <label for="amount">Valor <br />
-                    <small>(negativo - despesas, positivo - receitas)</small>
-                </label>
-                <input type="number" id="amount" placeholder="Valor da transação" required autocomplete="off"/>
-            </div>
-            
-            <button class="btn">Adicionar</button>
-        </form>
+                <div class="form-control">
+                    <label for="text">Tipo de Transação</label>
+                    <input autofocus type="text" list="tipo-transacao" id="tipo" placeholder="Nome da transação" required autofocus autocomplete="off"/>
+                    <datalist id="tipo-transacao">
+                        <option value="Entrada">
+                        <option value="Saída">
+                    </datalist>
+                </div>
+
+                <div class="form-control">
+                    <label for="text">Nome</label>
+                    <input type="text" id="text" placeholder="Nome da transação" required autofocus autocomplete="off"/>
+                </div>
+
+                <div class="form-control">
+                    <label for="amount">Valor <br />
+                        <small>(negativo - despesas, positivo - receitas)</small>
+                    </label>
+                    <input type="number" id="amount" placeholder="Valor da transação" required autocomplete="off"/>
+                </div>
+                
+                <div class="form-control">
+                    <label for="text">Horario da Trasação</label>
+                    <?php
+                        $datetimeLocal = explode(' ', date('Y-m-d H:i'));
+                        $datetimeLocalAgendado = $datetimeLocal[0].'T'.$datetimeLocal[1];
+                    ?>
+                    <input type="datetime-local" value="<?php echo $datetimeLocalAgendado; ?>" name="data-agend" required id="">
+                </div>
+
+                <button class="btn">Adicionar</button>
+            </form>
+        </div>
     </div>
 </div>

@@ -85,7 +85,7 @@ body.black{
     z-index: 20000000000000000000;
     -webkit-backdrop-filter: blur(2px);
     backdrop-filter: blur(2px);
-    background-color: rgba(255, 255, 255, .5);
+    background-color: rgba(255, 255, 255, .1);
     transition: background .5s, opacity .5s;
 }
 
@@ -115,12 +115,10 @@ body.black{
     height: 10px;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
     position: absolute;
     border-radius: 0 30px 30px 0;
     transform-origin: left;
     background: linear-gradient(to right, transparent 15%, var(--color-one) 15%);
-    transition: transform-origin 0;
 }
 .centerload .encaixe_p{
     width: 60px;
@@ -131,7 +129,7 @@ body.black{
     transition: transform 2s;
 }
 body.black .load-container{
-    background-color: rgba(0, 0, 0, .5);
+    background-color: rgba(0, 0, 0, .1);
 }
 body.black .centerload{
     border: 10px solid var(--color-plus-black);

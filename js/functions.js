@@ -62,8 +62,12 @@ function Chr(AsciiNum){
 
 /* ** */
 
-// $(document).ready(function(){
-    $(window).load(function(){
-        $('.load-container').fadeOut(1500);
-    });
-// })
+$(document).ready(function(){
+    $('.load-container').css('opacity', '0');
+    
+    setTimeout(()=>{
+        $('.load-container').css('display', 'none');
+        load(0)
+    }, 500);
+
+});

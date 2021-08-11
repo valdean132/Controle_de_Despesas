@@ -51,8 +51,9 @@
     
     <div class="load-container">
         <div class="centerload">
-            <div class="bool-1"></div>
-            <div class="bool-2"></div>
+            <div class="encaixe_p p"></div>
+            <div class="encaixe_m p"></div>
+            <div class="encaixe"></div>
         </div>
     </div><!-- Carregamento de Página -->
     
@@ -60,7 +61,6 @@
         <?php 
             include($pageAtual);
         ?>
-        
     </div>
 
     <script src="<?php echo INCLUDE_PATH; ?>js/jquery.min.js"></script>

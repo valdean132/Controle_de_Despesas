@@ -142,3 +142,65 @@ changeTheme(prefersColorScheme);
 // }
 
 /* ** ** */
+
+/* * * Popup Trasations * * */
+
+const btnTransations = $('.abrir-transations');
+const popupAdicionar = $('.pupup-adcionar');
+const fecharPopup = $('.fechar-popup');
+const inputData = $('input[name="data-trans"]');
+
+// Abrir
+btnTransations.click(()=>{
+    
+    popupAdicionar.css('display', 'block');
+
+    setTimeout(()=>{
+        popupAdicionar.css('opacity', '1');
+    }, 500);
+
+    return false;
+});
+
+// Fechar 
+
+popupAdicionar.click(e => {
+    if(e.target.className === 'pupup-adcionar' || e.target.className === 'fechar-popup'){
+
+        
+        popupAdicionar.css('opacity', '0');
+        setTimeout(()=>{
+            popupAdicionar.css('display', 'none');
+        }, 500);
+
+    }
+});
+
+
+/* ** ** */
+
+// const
+
+// console.log(inputDate.val())
+// inputDate.val('2021-08-12T14:00:37')
+    
+        
+
+        const updateClock = () =>{
+            let now = new Date();
+            let hour = now.getHours();
+            let minute = now.getMinutes();
+            let second = now.getSeconds();
+            let day = now.getDay();
+            let month = now.getMonth();
+            let year = now.getYear();
+
+            mElement.style.transform = `rotate(${mDeg}deg)`;
+            hElement.style.transform = `rotate(${hDeg}deg)`;
+            
+        }
+
+        // setInterval(updateClock, 500);
+        // updateClock();
+
+/* ** ** */

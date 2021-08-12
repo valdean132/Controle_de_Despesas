@@ -8,6 +8,15 @@
     font-family: 'Lato', sans-serif;
 }
 
+
+.w50{
+    width: 48%;
+}
+
+.w100{
+    width: 100%;
+}
+
 body{
     background-color: var(--backgroundColor-main);
     color: var(--color-main);
@@ -122,12 +131,21 @@ body.black{
 }
 .centerload .encaixe_p{
     width: 60px;
-    transition: transform 1s;
+    animation: p-rotation 2.5s linear infinite;
+    transform: rotate(-90deg);
 }
 .centerload .encaixe_m{
     width: 90px;
-    transition: transform 2s;
+    animation: p-rotation 1s linear infinite;
+    transform: rotate(-90deg);
 }
+
+@keyframes p-rotation {
+    0%{
+        transform: rotate(-450deg);
+    }
+}
+
 body.black .load-container{
     background-color: rgba(0, 0, 0, .1);
 }

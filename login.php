@@ -39,6 +39,7 @@
     <title>Login</title>
 </head>
 <body>
+    <main>
     <div class="load-container">
         <div class="centerload">
             <div class="encaixe_p p"></div>
@@ -46,7 +47,6 @@
             <div class="encaixe"></div>
         </div>
     </div><!-- Carregamento de Página -->
-    <main>
         <div class="div-box">
             <div class="avatar-box"></div><!-- Avatar User -->
             <div class="title">

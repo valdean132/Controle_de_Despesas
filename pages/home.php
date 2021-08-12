@@ -49,17 +49,18 @@
         </ul>
     </div>
     
-    <button class="btn abrir-transations">
+    <a class="btn abrir-transations" href="">
         Adicionar Transação
-    </button>
+    </a>
 
     <div class="pupup-adcionar">
         <div class="adcionar">
             <h3>Adicionar transação</h3>
-
+            
+            <div class="fechar-popup"></div>
             <form id="form">
 
-                <div class="form-control">
+                <div class="form-control w50">
                     <label for="text">Tipo de Transação</label>
                     <input autofocus type="text" list="tipo-transacao" id="tipo" placeholder="Nome da transação" required autofocus autocomplete="off"/>
                     <datalist id="tipo-transacao">
@@ -81,15 +82,15 @@
                 </div>
                 
                 <div class="form-control">
-                    <label for="text">Horario da Trasação</label>
+                    <label for="text">Horario da Transação</label>
                     <?php
-                        $datetimeLocal = explode(' ', date('Y-m-d H:i'));
+                        $datetimeLocal = explode(' ', date('Y-m-d H:i:s'));
                         $datetimeLocalAgendado = $datetimeLocal[0].'T'.$datetimeLocal[1];
                     ?>
-                    <input type="datetime-local" value="<?php echo $datetimeLocalAgendado; ?>" name="data-agend" required id="">
+                    <input type="datetime-local" value="<?php echo $datetimeLocalAgendado; ?>" name="data-trans" required id="">
                 </div>
 
-                <button class="btn">Adicionar</button>
+                <input type="submit" class="btn" value="Adicionar">
             </form>
         </div>
     </div>

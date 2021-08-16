@@ -10,7 +10,8 @@
 
 
 .w50{
-    width: 48%;
+    width: 49%;
+    /* display: inline-block; */
 }
 
 .w100{

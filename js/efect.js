@@ -149,15 +149,31 @@ const btnTransations = $('.abrir-transations');
 const popupAdicionar = $('.pupup-adcionar');
 const fecharPopup = $('.fechar-popup');
 const inputData = $('input[name="data-trans"]');
+const inputTipoTransacao = $('input[name="tipo-transacao"]');
+const divValor = $('#valor-type');
+const divEntrada = $('#entrada-type');
 
 // Abrir
 btnTransations.click(()=>{
-    
+
     popupAdicionar.css('display', 'block');
 
     setTimeout(()=>{
         popupAdicionar.css('opacity', '1');
     }, 500);
+
+    setInterval(()=>{
+        if(inputTipoTransacao.val().toLowerCase() === 'entrada'){
+            divValor.css('width', '49%');
+            divEntrada.css('width', '49%');
+            divEntrada.find(':input').prop('disabled', false);
+        }else{
+            divValor.css('width', '100%');
+            divEntrada.css('width', '0');
+            divEntrada.find(':input').prop('disabled', true);
+        }
+    }, 1000);
+
 
     return false;
 });

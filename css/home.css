@@ -141,9 +141,15 @@ h4 {
     display: block;
     background-color: var(--backgroundColor-main);
 }
-/* .adcionar form{
-
-} */
+.adcionar h3{
+    margin-top: 20px;
+}
+.adcionar form{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
 label {
     display: inline-block;
     margin: 10px 0;
@@ -170,6 +176,15 @@ label {
     border: 1px solid var(--color-plus);
     transition: border .5s;
 }
+#valor-type{
+    transition: width .5s;
+}
+#entrada-type{
+    width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    transition: width .5s;
+}
 .adcionar input.btn, .abrir-transations {
     cursor: pointer;
     outline: none;
@@ -189,7 +204,7 @@ label {
 }
 .adcionar input.btn{
     width: 40%;
-    margin: 20px auto 0;
+    margin: 20px auto;
 }
 
 .abrir-transations{

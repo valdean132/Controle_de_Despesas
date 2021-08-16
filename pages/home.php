@@ -61,34 +61,63 @@
             <form id="form">
 
                 <div class="form-control w50">
-                    <label for="text">Tipo de Transação</label>
-                    <input autofocus type="text" list="tipo-transacao" id="tipo" placeholder="Nome da transação" required autofocus autocomplete="off"/>
-                    <datalist id="tipo-transacao">
+                    <label for="tipo-transacao">Tipo de Transação</label>
+                    <input type="text" autofocus list="forma-transacao" name="tipo-transacao" id="tipo-transacao" placeholder="Tipo da transação" required autofocus autocomplete="off"/>
+                    <datalist id="forma-transacao">
                         <option value="Entrada">
                         <option value="Saída">
                     </datalist>
-                </div>
+                </div><!-- Tipo de transação -->
 
-                <div class="form-control">
-                    <label for="text">Nome</label>
-                    <input type="text" id="text" placeholder="Nome da transação" required autofocus autocomplete="off"/>
-                </div>
+                <div class="form-control w50">
+                    <label for="forma-pagamento">Forma de Pagamento</label>
+                    <input type="text" list="tipo-pagamento" name="forma-pagamento" id="forma-pagamento" placeholder="Forma de Pagamento" required autocomplete="off"/>
+                    <datalist id="tipo-pagamento">
+                        <option value="Dinheiro">
+                        <option value="Cartão de Credito">
+                        <option value="Cartão de Debito">
+                        <option value="Pix">
+                    </datalist>
+                </div><!-- Forma de Pagamento -->
 
-                <div class="form-control">
-                    <label for="amount">Valor <br />
-                        <small>(negativo - despesas, positivo - receitas)</small>
-                    </label>
-                    <input type="number" id="amount" placeholder="Valor da transação" required autocomplete="off"/>
-                </div>
+                <div class="form-control w100">
+                    <label for="descricao">Descrição</label>
+                    <input type="text" id="descricao" name="descricao" placeholder="Nome da transação" required autocomplete="off"/>
+                </div><!-- nome -->
+
+                <div class="form-control w100" id="valor-type">
+                    <label for="amount">Valor</label>
+                    <input type="number" name="amount" id="amount" placeholder="Valor da transação" required autocomplete="off"/>
+                </div><!-- Valor -->
                 
-                <div class="form-control">
-                    <label for="text">Horario da Transação</label>
+                <div class="form-control" id="entrada-type">
+                    <label for="tipo-entrada">Tipo de Entrada</label>
+                    <input disabled type="text" list="forma-entrada" name="tipo-entrada" id="tipo-entrada" placeholder="Tipo de Entrada" required autocomplete="off"/>
+                    <datalist id="forma-entrada">
+                        <option value="Fatura">
+                        <option value="Instalação">
+                        <option value="Emprestimo">
+                        <option value="Reposição">
+                    </datalist>
+                </div><!-- Forma de Entrada -->
+
+                <div class="form-control w50">
+                    <label for="data-hora">Horario da Transação</label>
                     <?php
                         $datetimeLocal = explode(' ', date('Y-m-d H:i:s'));
                         $datetimeLocalAgendado = $datetimeLocal[0].'T'.$datetimeLocal[1];
                     ?>
-                    <input type="datetime-local" value="<?php echo $datetimeLocalAgendado; ?>" name="data-trans" required id="">
-                </div>
+                    <input type="datetime-local" value="<?php echo $datetimeLocalAgendado; ?>" name="data-hora" required id="data-hora">
+                </div><!-- Horario da transação -->
+
+                <div class="form-control w50">
+                    <label for="responsavel">Responsável</label>
+                    <input type="text" list="resp" name="responsavel" id="responsavel" placeholder="Tipo de Entrada" required autocomplete="off"/>
+                    <datalist id="resp">
+                        <option value="Sandro Cordovil">
+                        <option value="Valdean Souza">
+                    </datalist>
+                </div><!-- Forma de Entrada -->
 
                 <input type="submit" class="btn" value="Adicionar">
             </form>

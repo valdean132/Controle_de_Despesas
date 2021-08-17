@@ -58,11 +58,11 @@
             <h3>Adicionar transação</h3>
             
             <div class="fechar-popup"></div>
-            <form id="form">
+            <form id="form" method="POST">
 
                 <div class="form-control w50">
-                    <label for="tipo-transacao">Tipo de Transação</label>
-                    <input type="text" autofocus list="forma-transacao" name="tipo-transacao" id="tipo-transacao" placeholder="Tipo da transação" required autofocus autocomplete="off"/>
+                    <label for="tipo-transacao">Transação</label>
+                    <input type="text" autofocus list="forma-transacao" name="tipo-transacao" id="tipo-transacao" placeholder="Tipo de transação" required autofocus autocomplete="off"/>
                     <datalist id="forma-transacao">
                         <option value="Entrada">
                         <option value="Saída">
@@ -70,7 +70,7 @@
                 </div><!-- Tipo de transação -->
 
                 <div class="form-control w50">
-                    <label for="forma-pagamento">Forma de Pagamento</label>
+                    <label for="forma-pagamento">Pagamento</label>
                     <input type="text" list="tipo-pagamento" name="forma-pagamento" id="forma-pagamento" placeholder="Forma de Pagamento" required autocomplete="off"/>
                     <datalist id="tipo-pagamento">
                         <option value="Dinheiro">
@@ -91,7 +91,7 @@
                 </div><!-- Valor -->
                 
                 <div class="form-control" id="entrada-type">
-                    <label for="tipo-entrada">Tipo de Entrada</label>
+                    <label for="tipo-entrada">Entrada</label>
                     <input disabled type="text" list="forma-entrada" name="tipo-entrada" id="tipo-entrada" placeholder="Tipo de Entrada" required autocomplete="off"/>
                     <datalist id="forma-entrada">
                         <option value="Fatura">
@@ -112,14 +112,10 @@
 
                 <div class="form-control w50">
                     <label for="responsavel">Responsável</label>
-                    <input type="text" list="resp" name="responsavel" id="responsavel" placeholder="Tipo de Entrada" required autocomplete="off"/>
-                    <datalist id="resp">
-                        <option value="Sandro Cordovil">
-                        <option value="Valdean Souza">
-                    </datalist>
+                    <input type="text" disabled list="resp" name="responsavel" class="disabled" value="<?php echo $_SESSION['nome']; ?>" id="responsavel"/>
                 </div><!-- Forma de Entrada -->
 
-                <input type="submit" class="btn" value="Adicionar">
+                <input type="submit" class="btn" name="acao" value="Adicionar">
             </form>
         </div>
     </div>

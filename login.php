@@ -14,7 +14,7 @@
             $_SESSION['user'] = $user;
             $_SESSION['password'] = $password;
             $_SESSION['cargo'] = $info['cargo']; 
-            $_SESSION['nome'] = $info['nome'];
+            $_SESSION['nome'] = $info['name'];
             $_SESSION['img'] = $info['img'];
             $_SESSION['themeMode'] = $info['themeMode'];
             if(isset($_POST['lembrarConexao'])){
@@ -75,7 +75,7 @@
                             $_SESSION['user'] = $user;
                             $_SESSION['password'] = $password;
                             $_SESSION['cargo'] = $info['cargo']; 
-                            $_SESSION['nome'] = $info['nome'];
+                            $_SESSION['nome'] = $info['name'];
                             $_SESSION['img'] = $info['img'];
                             $_SESSION['themeMode'] = $info['themeMode'];
                             if(isset($_POST['lembrarConexao'])){

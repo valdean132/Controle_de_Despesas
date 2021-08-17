@@ -68,6 +68,7 @@
         
     </script>
     <script src="<?php echo INCLUDE_PATH; ?>js/functions.js"></script>
+    <!--
     <script>
         setInterval(()=>{
             var url_atual = window.location.href;
@@ -83,7 +84,8 @@
             }
         });
     </script>
-    <script src="<?php echo INCLUDE_PATH; ?>js/script.js"></script>
+    -->
+    <!-- <script src="<?php echo INCLUDE_PATH; ?>js/script.js"></script> -->
     <script src="<?php echo INCLUDE_PATH; ?>js/efect.js"></script>
 </body>
 </html>

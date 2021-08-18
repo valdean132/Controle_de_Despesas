@@ -35,4 +35,29 @@
                 return('pages/home.php');
             }
         }
+
+        // Variaveis Globais
+        public static $globalVariables = [
+            'forma-transacao' => [
+                '0' => 'Entrada',
+                '1' => 'Saída',
+            ],
+            'tipo-pagamento' => [
+                '0' => 'Dinheiro',
+                '1' => 'Cartão de Credito',
+                '2' => 'Cartão de Debito',
+                '3' => 'Pix'
+            ],
+            'responsavel-transacao' => [
+                '0' => 'Sandro Cordovil Rodrigues',
+                '1' => 'Valdean Palmeira de Souza',
+                '2' => 'Samuel Rodrigues',
+            ],
+            'forma-entrada' => [
+                '0' => 'Fatura',
+                '1' => 'Instalação',
+                '2' => 'Emprestimo',
+                '3' => 'Reposição'
+            ]
+        ];
     }

@@ -155,9 +155,9 @@ const divEntrada = $('#entrada-type');
 
 // Abrir
 btnTransations.click(()=>{
-
+    
     popupAdicionar.css('display', 'block');
-
+    
     setTimeout(()=>{
         popupAdicionar.css('opacity', '1');
     }, 500);
@@ -173,7 +173,11 @@ btnTransations.click(()=>{
             divEntrada.find(':input').prop('disabled', true);
         }
     }, 1000);
+    
+    divValor.find(':input').maskMoney({thousands:'.', decimal:',', symbolStay: true});
 
+    setInterval(updateClock, 1000);
+    updateClock();
 
     return false;
 });
@@ -182,41 +186,42 @@ btnTransations.click(()=>{
 
 popupAdicionar.click(e => {
     if(e.target.className === 'pupup-adcionar' || e.target.className === 'fechar-popup'){
-
+        
         
         popupAdicionar.css('opacity', '0');
         setTimeout(()=>{
             popupAdicionar.css('display', 'none');
         }, 500);
-
+        
     }
 });
 
 
+$('.value-amount').mask('#.##0,00', {reverse: true});
 /* ** ** */
 
-// const
 
-// console.log(inputDate.val())
-// inputDate.val('2021-08-12T14:00:37')
+
+const updateClock = () =>{
+    dataHora = $('input[name="data-hora"]');
+    let now = new Date();
+    let hour = now.getHours();
+    let minute = now.getMinutes();
+    let day = now.getDate();
+    let month = now.getMonth() + 1;
+    let year = now.getFullYear();
     
-        
+    if(dataHora.val() == ''){
+        dataHora.val(`${year}-${fixZero(month)}-${fixZero(day)}T${fixZero(hour)}:${fixZero(minute)}`);
+    }
+}
 
-        const updateClock = () =>{
-            let now = new Date();
-            let hour = now.getHours();
-            let minute = now.getMinutes();
-            let second = now.getSeconds();
-            let day = now.getDay();
-            let month = now.getMonth();
-            let year = now.getYear();
+const fixZero = time => {
+        return time < 10 ? `0${time}` : time;
+}
 
-            mElement.style.transform = `rotate(${mDeg}deg)`;
-            hElement.style.transform = `rotate(${hDeg}deg)`;
-            
-        }
+setInterval(updateClock, 1000);
+updateClock();
 
-        // setInterval(updateClock, 500);
-        // updateClock();
 
 /* ** ** */

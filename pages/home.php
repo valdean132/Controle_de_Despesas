@@ -16,22 +16,30 @@
     </div><!-- Conf Delet -->
 </div>
 
+<?php
+    if(isset($_POST['acao'])){
+        $dataHora = explode('T', $_POST['data-hora']);
+        $datetimeLocal = $dataHora[0].' '.$dataHora[1].':00';
+    }
+?>
+
 <h2 class="title-geral">Controle de despesas</h2>
 <h2 class="title-geral">
 </h2>
 <div class="container">
     <div class="mian-RC">
-        <h4>Saldo atual</h4>
+        <!-- <h4>Saldo atual</h4> -->
+        <h4><?php echo $datetimeLocal ?></h4>
 
-        <h2 id="balance" class="balance">R$ 0.00</h2>
+        <h2 id="balance" class="balance">R$ <span class="value-amount">25500</span></h2>
         <div class="inc-exp-container">
             <div>
                 <h4>Receitas</h4>
-                <p id="money-plus" class="money plus">+ R$0.00</p>
+                <p id="money-plus" class="money plus">+ R$<span class="value-amount">225500</span></p>
             </div>
             <div>
                 <h4>Despesas</h4>
-                <p id="money-minus" class="money minus">- R$0.00</p>
+                <p id="money-minus" class="money minus">- R$<span class="value-amount">25500</span></p>
             </div>
         </div>
     </div>
@@ -64,8 +72,9 @@
                     <label for="tipo-transacao">Transação</label>
                     <input type="text" autofocus list="forma-transacao" name="tipo-transacao" id="tipo-transacao" placeholder="Tipo de transação" required autofocus autocomplete="off"/>
                     <datalist id="forma-transacao">
-                        <option value="Entrada">
-                        <option value="Saída">
+                        <?php foreach(Painel::$globalVariables['forma-transacao'] as $values ){ ?>
+                            <option value="<?php echo $values; ?>">
+                        <?php } ?>
                     </datalist>
                 </div><!-- Tipo de transação -->
 
@@ -73,45 +82,47 @@
                     <label for="forma-pagamento">Pagamento</label>
                     <input type="text" list="tipo-pagamento" name="forma-pagamento" id="forma-pagamento" placeholder="Forma de Pagamento" required autocomplete="off"/>
                     <datalist id="tipo-pagamento">
-                        <option value="Dinheiro">
-                        <option value="Cartão de Credito">
-                        <option value="Cartão de Debito">
-                        <option value="Pix">
+                        <?php foreach(Painel::$globalVariables['tipo-pagamento'] as $values ){ ?>
+                            <option value="<?php echo $values; ?>">
+                        <?php } ?>
                     </datalist>
                 </div><!-- Forma de Pagamento -->
 
-                <div class="form-control w100">
+                <div class="form-control w50">
                     <label for="descricao">Descrição</label>
                     <input type="text" id="descricao" name="descricao" placeholder="Nome da transação" required autocomplete="off"/>
                 </div><!-- nome -->
-
+                <div class="form-control w50">
+                    <label for="responsavel-transacao">Responsável pela Transação</label>
+                    <input type="text" list="resp-trans" name="responsavel-transacao" id="responsavel-transacao" placeholder="Nome do responsável" required autocomplete="off"/>
+                    <datalist id="resp-trans">
+                        <?php foreach(Painel::$globalVariables['responsavel-transacao'] as $values ){ ?>
+                            <option value="<?php echo $values; ?>">
+                        <?php } ?>
+                    </datalist>
+                </div><!-- Forma de Entrada -->
                 <div class="form-control w100" id="valor-type">
                     <label for="amount">Valor</label>
-                    <input type="number" name="amount" id="amount" placeholder="Valor da transação" required autocomplete="off"/>
+                    <input type="text" name="amount" id="amount" placeholder="Valor da transação" required autocomplete="off"/>
                 </div><!-- Valor -->
-                
+                <!-- onkeypress='return event.charCode >= 48 && event.charCode <= 57' -->
                 <div class="form-control" id="entrada-type">
                     <label for="tipo-entrada">Entrada</label>
                     <input disabled type="text" list="forma-entrada" name="tipo-entrada" id="tipo-entrada" placeholder="Tipo de Entrada" required autocomplete="off"/>
                     <datalist id="forma-entrada">
-                        <option value="Fatura">
-                        <option value="Instalação">
-                        <option value="Emprestimo">
-                        <option value="Reposição">
+                    <?php foreach(Painel::$globalVariables['forma-entrada'] as $values ){ ?>
+                            <option value="<?php echo $values; ?>">
+                        <?php } ?>
                     </datalist>
                 </div><!-- Forma de Entrada -->
 
                 <div class="form-control w50">
                     <label for="data-hora">Horario da Transação</label>
-                    <?php
-                        $datetimeLocal = explode(' ', date('Y-m-d H:i:s'));
-                        $datetimeLocalAgendado = $datetimeLocal[0].'T'.$datetimeLocal[1];
-                    ?>
-                    <input type="datetime-local" value="<?php echo $datetimeLocalAgendado; ?>" name="data-hora" required id="data-hora">
+                    <input type="datetime-local" name="data-hora" required id="data-hora">
                 </div><!-- Horario da transação -->
 
                 <div class="form-control w50">
-                    <label for="responsavel">Responsável</label>
+                    <label for="responsavel">Responsável pela Anotação</label>
                     <input type="text" disabled list="resp" name="responsavel" class="disabled" value="<?php echo $_SESSION['nome']; ?>" id="responsavel"/>
                 </div><!-- Forma de Entrada -->
 

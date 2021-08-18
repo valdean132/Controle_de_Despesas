@@ -64,9 +64,7 @@
     </div>
 
     <script src="<?php echo INCLUDE_PATH; ?>js/jquery.min.js"></script>
-    <script>
-        
-    </script>
+    <script src="<?php echo INCLUDE_PATH; ?>js/jquery.mask.js"></script>
     <script src="<?php echo INCLUDE_PATH; ?>js/functions.js"></script>
     <!--
     <script>

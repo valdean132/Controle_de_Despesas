@@ -87,6 +87,12 @@ body.black{
     background-color: #f75353;
     animation: shake 1s;
 }
+body.black .sucesso{
+    background-color: #188b1c;
+}
+body.black .error{
+    background-color: #b31010;
+}
 .error::before{
     content: '\f12a';
 }

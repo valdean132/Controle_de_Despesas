@@ -166,11 +166,13 @@ btnTransations.click(()=>{
         if(inputTipoTransacao.val().toLowerCase() === 'entrada'){
             divValor.css('width', '49%');
             divEntrada.css('width', '49%');
-            divEntrada.find(':input').prop('disabled', false);
+            // divEntrada.find(':input').prop('disabled', false);
+            divEntrada.find(':input').prop('required', true);
         }else{
             divValor.css('width', '100%');
             divEntrada.css('width', '0');
-            divEntrada.find(':input').prop('disabled', true);
+            // divEntrada.find(':input').prop('disabled', true);
+            divEntrada.find(':input').prop('required', false);
         }
     }, 1000);
     
@@ -196,8 +198,6 @@ popupAdicionar.click(e => {
     }
 });
 
-
-$('.value-amount').mask('#.##0,00', {reverse: true});
 /* ** ** */
 
 
@@ -211,9 +211,10 @@ const updateClock = () =>{
     let month = now.getMonth() + 1;
     let year = now.getFullYear();
     
-    if(dataHora.val() == ''){
+
+    // if(!dataHora.click()){
         dataHora.val(`${year}-${fixZero(month)}-${fixZero(day)}T${fixZero(hour)}:${fixZero(minute)}`);
-    }
+    // }
 }
 
 const fixZero = time => {

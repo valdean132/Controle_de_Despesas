@@ -17,29 +17,51 @@
 </div>
 
 <?php
+    $boxAlert = '';
+    
     if(isset($_POST['acao'])){
         $dataHora = explode('T', $_POST['data-hora']);
-        $datetimeLocal = $dataHora[0].' '.$dataHora[1].':00';
+        $datetimeLocal = $dataHora[0].' '.$dataHora[1];
+
+
+        $tipoTransacao = strtolower($_POST['tipo-transacao']) === 'entrada' ? '1' : '0';
+        $formaPagamento = $_POST['forma-pagamento'];
+        $descricao = $_POST['descricao'];
+        $responsavelTransacao = $_POST['responsavel-transacao'];
+        $amount = Painel::explodeAmount($_POST['amount']);
+        $tipoEntrada = $_POST['tipo-entrada'] === '' ? '' : $_POST['tipo-entrada'];
+        $observacoes = $_POST['observacoes'] === '' ? '' : $_POST['observacoes'];
+        $responsavelAnotacao = $_SESSION['nome'];
+
+        if(EnviForm::formTransacao($tipoTransacao, $formaPagamento, $descricao, $responsavelTransacao, $amount, $tipoEntrada, $observacoes, $datetimeLocal, $responsavelAnotacao)){
+            $boxAlert = Painel::boxMsg('sucesso', 'Transação enviada com Sucesso!!!');
+        }else{
+            $boxAlert = Painel::boxMsg('error', 'Erro ao enviar o formulário!!!', 'Tente novamente mais tarde');
+        }
     }
 ?>
+
+<div class="div-form-valid box-alert-container" style="width: 50%; height: 45px;">
+    <?php echo $boxAlert; ?>
+</div>
 
 <h2 class="title-geral">Controle de despesas</h2>
 <h2 class="title-geral">
 </h2>
 <div class="container">
     <div class="mian-RC">
-        <!-- <h4>Saldo atual</h4> -->
-        <h4><?php echo $datetimeLocal ?></h4>
+        <!-- <h4><?php echo $tipoEntrada ?></h4> -->
+        <h4>Saldo Atual</h4>
 
         <h2 id="balance" class="balance">R$ <span class="value-amount">25500</span></h2>
         <div class="inc-exp-container">
             <div>
                 <h4>Receitas</h4>
-                <p id="money-plus" class="money plus">+ R$<span class="value-amount">225500</span></p>
+                <p id="money-plus" class="money plus">+ R$<span class="value-amount">000</span></p>
             </div>
             <div>
                 <h4>Despesas</h4>
-                <p id="money-minus" class="money minus">- R$<span class="value-amount">25500</span></p>
+                <p id="money-minus" class="money minus">- R$<span class="value-amount">000</span></p>
             </div>
         </div>
     </div>
@@ -92,6 +114,7 @@
                     <label for="descricao">Descrição</label>
                     <input type="text" id="descricao" name="descricao" placeholder="Nome da transação" required autocomplete="off"/>
                 </div><!-- nome -->
+
                 <div class="form-control w50">
                     <label for="responsavel-transacao">Responsável pela Transação</label>
                     <input type="text" list="resp-trans" name="responsavel-transacao" id="responsavel-transacao" placeholder="Nome do responsável" required autocomplete="off"/>
@@ -101,6 +124,7 @@
                         <?php } ?>
                     </datalist>
                 </div><!-- Forma de Entrada -->
+
                 <div class="form-control w100" id="valor-type">
                     <label for="amount">Valor</label>
                     <input type="text" name="amount" id="amount" placeholder="Valor da transação" required autocomplete="off"/>
@@ -108,12 +132,17 @@
                 <!-- onkeypress='return event.charCode >= 48 && event.charCode <= 57' -->
                 <div class="form-control" id="entrada-type">
                     <label for="tipo-entrada">Entrada</label>
-                    <input disabled type="text" list="forma-entrada" name="tipo-entrada" id="tipo-entrada" placeholder="Tipo de Entrada" required autocomplete="off"/>
+                    <input type="text" list="forma-entrada" name="tipo-entrada" id="tipo-entrada" placeholder="Tipo de Entrada" autocomplete="off"/>
                     <datalist id="forma-entrada">
-                    <?php foreach(Painel::$globalVariables['forma-entrada'] as $values ){ ?>
+                        <?php foreach(Painel::$globalVariables['forma-entrada'] as $values ){ ?>
                             <option value="<?php echo $values; ?>">
                         <?php } ?>
                     </datalist>
+                </div><!-- Forma de Entrada -->
+
+                <div class="form-control w100">
+                    <label for="observacoes">Observações</label>
+                    <textarea name="observacoes" placeholder="Digite a observação" id="observacoes"></textarea>
                 </div><!-- Forma de Entrada -->
 
                 <div class="form-control w50">
@@ -122,8 +151,8 @@
                 </div><!-- Horario da transação -->
 
                 <div class="form-control w50">
-                    <label for="responsavel">Responsável pela Anotação</label>
-                    <input type="text" disabled list="resp" name="responsavel" class="disabled" value="<?php echo $_SESSION['nome']; ?>" id="responsavel"/>
+                    <label for="responsavel-anotacao">Responsável pela Anotação</label>
+                    <input type="text" disabled list="resp" name="responsavel-anotacao" class="disabled" value="<?php echo $_SESSION['nome']; ?>" id="responsavel-anotacao"/>
                 </div><!-- Forma de Entrada -->
 
                 <input type="submit" class="btn" name="acao" value="Adicionar">

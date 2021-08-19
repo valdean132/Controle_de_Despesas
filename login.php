@@ -94,7 +94,7 @@
                     }
                 }
             ?>
-            <div class="div-form-valid" style="height: <?php echo $height; ?>">
+            <div class="div-form-valid box-alert-container" style="height: <?php echo $height; ?>">
                 <?php echo $boxAlert; ?>
             </div>
             <div class="box-form">

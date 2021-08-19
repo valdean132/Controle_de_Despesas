@@ -74,3 +74,29 @@ $(document).ready(function(){
 });
 
 /* ** */
+
+/* * * Atributos Gerais * * */
+
+$('.value-amount').mask('#.##0,00', {reverse: true});
+$('textarea').on('input', function () {
+    this.style.height = 'auto';
+    this.style.height = (this.scrollHeight) + 'px';
+});
+
+
+/* ** */
+
+/* * * Ocultar Box de Alerta * * */
+
+function boxAlertOcult(){
+    $('.box-alert-container').css('opacity', '0').css('top', '-50px');
+    setTimeout(()=>{
+        $('.box-alert-container').css('diplay', 'none');
+    }, 1000);
+}
+setTimeout(()=>{
+
+    boxAlertOcult();
+}, 3000);
+
+/* ** */

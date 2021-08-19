@@ -60,4 +60,13 @@
                 '3' => 'Reposição'
             ]
         ];
+
+        public static function explodeAmount($amount){
+            $juntVir = explode(',', $amount);
+            
+            $explodePont = explode('.', implode($juntVir));
+
+            return is_array($explodePont) ? implode($explodePont) : implode($juntVir);
+
+        }
     }

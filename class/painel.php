@@ -61,6 +61,7 @@
             ]
         ];
 
+        // deixando apenas números
         public static function explodeAmount($amount){
             $juntVir = explode(',', $amount);
             
@@ -68,5 +69,44 @@
 
             return is_array($explodePont) ? implode($explodePont) : implode($juntVir);
 
+        }
+
+        // Calculando Entrada
+        public static function calcAmauntEntrada($valuesTable){
+            $contEntrada = 0;
+            foreach($valuesTable as $value){
+                if($value['tipo-transacao'] == 1){
+                    $contEntrada+=$value['amount'];
+                } 
+            }
+            return $contEntrada;
+        }
+
+        // Calculando Saida
+        public static function calcAmauntSaida($valuesTable){
+            $contSaida = 0;
+            foreach($valuesTable as $value){
+                if($value['tipo-transacao'] == 0){
+                    $contSaida+=$value['amount'];
+                } 
+            }
+            return $contSaida;
+        }
+        // Calculando Saida
+        public static function calcAmauntGeral($calEntrada, $calcSaida){
+            return $calEntrada - $calcSaida;
+        }
+
+        // Verificação de número
+        public static function verifNumber($number){
+            if($number == 0){
+                $number = '000';
+            }else if(strlen(abs($number)) == 2){
+                $number = '0'.abs($number);
+            }else{
+                abs($number);
+            }
+
+            return $number;
         }
     }

@@ -17,6 +17,7 @@
 </div>
 
 <?php
+    $infoTransacions = PullBench::tableBench('tb.control_transactions');
     $boxAlert = '';
     
     if(isset($_POST['acao'])){
@@ -35,10 +36,18 @@
 
         if(EnviForm::formTransacao($tipoTransacao, $formaPagamento, $descricao, $responsavelTransacao, $amount, $tipoEntrada, $observacoes, $datetimeLocal, $responsavelAnotacao)){
             $boxAlert = Painel::boxMsg('sucesso', 'Transação enviada com Sucesso!!!');
+            $infoTransacions = PullBench::tableBench('tb.control_transactions');
+            // header('Location:'.$_SERVER['PHP_SELF']);
         }else{
             $boxAlert = Painel::boxMsg('error', 'Erro ao enviar o formulário!!!', 'Tente novamente mais tarde');
         }
     }
+
+    // Calc Amaunt
+    $calcEntrada = Painel::calcAmauntEntrada($infoTransacions);
+    $calcSaida = Painel::calcAmauntSaida($infoTransacions);
+    $calcGeral = Painel::calcAmauntGeral($calcEntrada, $calcSaida);
+    $operator = $calcGeral < 0 ? '-' : '';
 ?>
 
 <div class="div-form-valid box-alert-container" style="width: 50%; height: 45px;">
@@ -53,15 +62,21 @@
         <!-- <h4><?php echo $tipoEntrada ?></h4> -->
         <h4>Saldo Atual</h4>
 
-        <h2 id="balance" class="balance">R$ <span class="value-amount">25500</span></h2>
+        <h2 id="balance" class="balance"><?php echo $operator ?> R$ 
+            <span class="value-amount"><?php echo Painel::verifNumber($calcGeral) < 0 ? abs(Painel::verifNumber($calcGeral)) : Painel::verifNumber($calcGeral) ?></span>
+        </h2>
         <div class="inc-exp-container">
             <div>
                 <h4>Receitas</h4>
-                <p id="money-plus" class="money plus">+ R$<span class="value-amount">000</span></p>
+                <p id="money-plus" class="money plus">R$ 
+                    <span class="value-amount"><?php echo Painel::verifNumber($calcEntrada); ?></span>
+                </p>
             </div>
             <div>
                 <h4>Despesas</h4>
-                <p id="money-minus" class="money minus">- R$<span class="value-amount">000</span></p>
+                <p id="money-minus" class="money minus">R$ 
+                    <span class="value-amount"><?php echo Painel::verifNumber($calcSaida); ?></span>
+                </p>
             </div>
         </div>
     </div>
@@ -70,11 +85,40 @@
         <ul id="transactions" class="transactions">
             <div class="transacao trans-entrada">
                 <h3>Entrada</h3>
-                <div id="entrada"></div>
+                <div id="entrada">
+                    <?php
+                        foreach($infoTransacions as $key => $values){
+                            if($values['tipo-transacao'] == 1){
+                    ?>
+                        <li class="plus">
+                            <?php echo $values['descricao'] ?> - <?php echo $values['tipo-entrada'] ?>
+                            <span>+ R$ <span class="value-amount"><?php echo $values['amount'] ?></span></span>
+                            <button class="delete-btn">x</button>
+                        </li>
+                    <?php            
+                            }
+                        }
+                    ?>
+                    
+                </div>
             </div>
             <div class="transacao trans-saida">
                 <h3 class="transacao-title">Saída</h3>
-                <div id="saida"></div>
+                <div id="saida">
+                <?php
+                        foreach($infoTransacions as $key => $values){
+                            if($values['tipo-transacao'] == 0){
+                    ?>
+                        <li class="minus">
+                            <?php echo $values['descricao'] ?>
+                            <span>- R$ <span class="value-amount"><?php echo $values['amount'] ?></span></span>
+                            <button class="delete-btn">x</button>
+                        </li>
+                    <?php            
+                            }
+                        }
+                    ?>
+                </div>
             </div>
         </ul>
     </div>

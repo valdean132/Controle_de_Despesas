@@ -100,3 +100,11 @@ setTimeout(()=>{
 }, 3000);
 
 /* ** */
+
+/* * * Inpedindo Envio de Formúlario * * */
+
+window.onload = function() {
+    history.replaceState("", "", window.location.href);
+}
+
+/* ** */

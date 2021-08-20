@@ -270,6 +270,7 @@ h3.transacao-title{
     border-radius: 5px;
     overflow: auto;
     transition: background-color .5s, border .5s;
+    text-transform: uppercase;
 }
 #entrada::-webkit-scrollbar, #saida::-webkit-scrollbar{
     width: 5px;

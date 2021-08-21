@@ -45,37 +45,76 @@ amberMenu.click(()=>{
 /* ** ** */
 
 
-/* * * Menu Show * * */
+// /* * * Transactions Dinâmico * * */
 
+// dynamicLoadingTransactions();
 
+// function dynamicLoadingTransactions(){
+//     const containerTransactions = $('#popup-transactions-mostrar')
+//     $('[realtimetrasactions]').click(function(){
+//         var pagina = $(this).attr('realtimetrasactions');
 
-// dynamicLoading();
-
-function dynamicLoading(){
-    const containerCenter = $('.container-center');
-    $('[realtime]').click(function(){
-        var pagina = $(this).attr('realtime');
-
-        let url = include_path+'pages/'+pagina+'.php';
-        containerCenter.hide();
+//         paginaSep = pagina.split('?');
         
-        containerCenter.load(url);
+//         let url = include_path+'pages/'+paginaSep[0]+'.php?'+paginaSep[1];
+//         console.log(url);
+//         containerTransactions.css('display', 'block');
+    
+//         setTimeout(()=>{
+//             containerTransactions.css('opacity', '1');
+//         }, 500);
+        
+//         containerTransactions.load(url);
         
 
-        if(pagina !== 'home'){
-            window.history.pushState('', '', pagina);
-        }else{
-            window.history.pushState('', '', include_path);
-        }
-        boxMenu.removeClass('active');
-        containerCenter.fadeIn(200);
+//         window.history.pushState('', '', pagina);
+
+//         // boxMenu.removeClass('active');
+//         // containerTransactions.fadeIn(200);
+
+//         return false;
+//     });
+// }
+
+/* ** ** */
+
+/* * * Transactions Dinâmico * * */
+
+
+
+dynamicLoadingTransactions();
+
+function dynamicLoadingTransactions(){
+    $('[realtimetrasactions]').click(function(){
+        const containerTransactions = $('#popup-transactions-mostrar');
+        var pagina = $(this).attr('realtimetrasactions');
+
+        paginaSep = pagina.split('?');
+        
+        let url = include_path+'pages/'+paginaSep[0]+'.php?'+paginaSep[1];
+        console.log(url);
+        containerTransactions.css('display', 'block');
+    
+        setTimeout(()=>{
+            containerTransactions.css('opacity', '1');
+        }, 500);
+        
+        $.get(include_path+paginaSep[0]+'.php', {pagina: '?'+paginaSep[1]}, function(data){
+            containerTransactions.html(data);
+        });
+        // containerTransactions.load(url);
+        
+
+        // window.history.pushState('', '', pagina);
+
+        // boxMenu.removeClass('active');
+        // containerTransactions.fadeIn(200);
 
         return false;
     });
 }
 
 /* ** ** */
-
 
 
 
@@ -146,7 +185,7 @@ changeTheme(prefersColorScheme);
 /* * * Popup Trasations * * */
 
 const btnTransations = $('.abrir-transations');
-const popupAdicionar = $('.pupup-adcionar');
+const popupAdicionar = $('#popup-transactions-adcionar');
 const fecharPopup = $('.fechar-popup');
 const inputData = $('input[name="data-trans"]');
 const inputTipoTransacao = $('input[name="tipo-transacao"]');
@@ -166,20 +205,15 @@ btnTransations.click(()=>{
         if(inputTipoTransacao.val().toLowerCase() === 'entrada'){
             divValor.css('width', '49%');
             divEntrada.css('width', '49%');
-            // divEntrada.find(':input').prop('disabled', false);
             divEntrada.find(':input').prop('required', true);
         }else{
             divValor.css('width', '100%');
             divEntrada.css('width', '0');
-            // divEntrada.find(':input').prop('disabled', true);
             divEntrada.find(':input').prop('required', false);
         }
     }, 1000);
     
     divValor.find(':input').maskMoney({thousands:'.', decimal:',', symbolStay: true});
-
-    setInterval(updateClock, 1000);
-    updateClock();
 
     return false;
 });
@@ -202,27 +236,3 @@ popupAdicionar.click(e => {
 
 
 
-const updateClock = () =>{
-    dataHora = $('input[name="data-hora"]');
-    let now = new Date();
-    let hour = now.getHours();
-    let minute = now.getMinutes();
-    let day = now.getDate();
-    let month = now.getMonth() + 1;
-    let year = now.getFullYear();
-    
-
-    // if(!dataHora.click()){
-        dataHora.val(`${year}-${fixZero(month)}-${fixZero(day)}T${fixZero(hour)}:${fixZero(minute)}`);
-    // }
-}
-
-const fixZero = time => {
-        return time < 10 ? `0${time}` : time;
-}
-
-setInterval(updateClock, 1000);
-updateClock();
-
-
-/* ** ** */

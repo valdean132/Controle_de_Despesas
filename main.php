@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="<?php echo INCLUDE_PATH; ?>css/colos.css">
     <link rel="stylesheet" href="<?php echo INCLUDE_PATH; ?>css/main.css">
     <?php
-        if($pageAtual === 'pages/home.php'){
+        if($pageAtual === 'pages/home.php' || $pageAtual === 'pages/transactions-view'){
             echo '<link rel="stylesheet" href="'.INCLUDE_PATH.'css/home.css" />';
         }
     ?>

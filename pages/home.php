@@ -17,14 +17,11 @@
 </div>
 
 <?php
-    $infoTransacions = PullBench::tableBench('tb.control_transactions');
+    $infoTransacions = PullBench::tableBench('tb.control_transactions', 'ORDER BY `data-atual`');
     $boxAlert = '';
     
     if(isset($_POST['acao'])){
-        $dataHora = explode('T', $_POST['data-hora']);
-        $datetimeLocal = $dataHora[0].' '.$dataHora[1];
-
-
+        
         $tipoTransacao = strtolower($_POST['tipo-transacao']) === 'entrada' ? '1' : '0';
         $formaPagamento = $_POST['forma-pagamento'];
         $descricao = $_POST['descricao'];
@@ -32,12 +29,14 @@
         $amount = Painel::explodeAmount($_POST['amount']);
         $tipoEntrada = $_POST['tipo-entrada'] === '' ? '' : $_POST['tipo-entrada'];
         $observacoes = $_POST['observacoes'] === '' ? '' : $_POST['observacoes'];
+        $dateLocal = $_POST['data-atual'];
         $responsavelAnotacao = $_SESSION['nome'];
+        
+        $uniqId = date("BHis").uniqid();
 
-        if(EnviForm::formTransacao($tipoTransacao, $formaPagamento, $descricao, $responsavelTransacao, $amount, $tipoEntrada, $observacoes, $datetimeLocal, $responsavelAnotacao)){
+        if(EnviForm::formTransacao($uniqId, $tipoTransacao, $formaPagamento, $descricao, $responsavelTransacao, $amount, $tipoEntrada, $observacoes, $dateLocal, $responsavelAnotacao)){
             $boxAlert = Painel::boxMsg('sucesso', 'Transação enviada com Sucesso!!!');
-            $infoTransacions = PullBench::tableBench('tb.control_transactions');
-            // header('Location:'.$_SERVER['PHP_SELF']);
+            $infoTransacions = PullBench::tableBench('tb.control_transactions', 'ORDER BY `data-atual`');
         }else{
             $boxAlert = Painel::boxMsg('error', 'Erro ao enviar o formulário!!!', 'Tente novamente mais tarde');
         }
@@ -90,11 +89,13 @@
                         foreach($infoTransacions as $key => $values){
                             if($values['tipo-transacao'] == 1){
                     ?>
-                        <li class="plus">
-                            <?php echo $values['descricao'] ?> - <?php echo $values['tipo-entrada'] ?>
-                            <span>+ R$ <span class="value-amount"><?php echo $values['amount'] ?></span></span>
-                            <button class="delete-btn">x</button>
-                        </li>
+                        <a realtimetrasactions='transactions-view?transaction=<?php echo $values['uniqId']; ?>' href="<?php echo INCLUDE_PATH; ?>transactions-view?transaction=<?php echo $values['uniqId']; ?>">
+                            <li class="plus">
+                                <?php echo $values['descricao'] ?> - <?php echo $values['tipo-entrada'] ?>
+                                <span>+ R$ <span class="value-amount"><?php echo $values['amount'] ?></span></span>
+                                <button class="delete-btn">x</button>
+                            </li>
+                        </a>
                     <?php            
                             }
                         }
@@ -109,11 +110,13 @@
                         foreach($infoTransacions as $key => $values){
                             if($values['tipo-transacao'] == 0){
                     ?>
-                        <li class="minus">
-                            <?php echo $values['descricao'] ?>
-                            <span>- R$ <span class="value-amount"><?php echo $values['amount'] ?></span></span>
-                            <button class="delete-btn">x</button>
-                        </li>
+                        <a realtimetrasactions='transactions-view?transaction=<?php echo $values['uniqId']; ?>' href="<?php echo INCLUDE_PATH; ?>transactions-view?transaction=<?php echo $values['uniqId']; ?>">
+                            <li class="minus">
+                                <?php echo $values['descricao'] ?>
+                                <span>- R$ <span class="value-amount"><?php echo $values['amount'] ?></span></span>
+                                <button class="delete-btn">x</button>
+                            </li>
+                        </a>
                     <?php            
                             }
                         }
@@ -127,7 +130,7 @@
         Adicionar Transação
     </a>
 
-    <div class="pupup-adcionar">
+    <div class="pupup-adcionar" id="popup-transactions-adcionar">
         <div class="adcionar">
             <h3>Adicionar transação</h3>
             
@@ -190,8 +193,9 @@
                 </div><!-- Forma de Entrada -->
 
                 <div class="form-control w50">
-                    <label for="data-hora">Horario da Transação</label>
-                    <input type="datetime-local" name="data-hora" required id="data-hora">
+                    <label for="data-atual">Horario da Transação</label>
+                    <?php $dataAtual = date('Y-m-d') ?>
+                    <input type="date" name="data-atual" value="<?php echo $dataAtual ?>" required id="data-atual">
                 </div><!-- Horario da transação -->
 
                 <div class="form-control w50">
@@ -203,4 +207,7 @@
             </form>
         </div>
     </div>
+</div>
+<div class="pupup-adcionar" id="popup-transactions-mostrar">
+    
 </div>

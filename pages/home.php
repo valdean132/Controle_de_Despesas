@@ -32,7 +32,7 @@
         $dateLocal = $_POST['data-atual'];
         $responsavelAnotacao = $_SESSION['nome'];
         
-        $uniqId = date("BHis").uniqid();
+        $uniqId = '_'.uniqid();
 
         if(EnviForm::formTransacao($uniqId, $tipoTransacao, $formaPagamento, $descricao, $responsavelTransacao, $amount, $tipoEntrada, $observacoes, $dateLocal, $responsavelAnotacao)){
             $boxAlert = Painel::boxMsg('sucesso', 'Transação enviada com Sucesso!!!');
@@ -89,11 +89,11 @@
                         foreach($infoTransacions as $key => $values){
                             if($values['tipo-transacao'] == 1){
                     ?>
-                        <a realtimetrasactions='transactions-view?transaction=<?php echo $values['uniqId']; ?>' href="<?php echo INCLUDE_PATH; ?>transactions-view?transaction=<?php echo $values['uniqId']; ?>">
+                        <a realtimetrasactions='transaction=<?php echo $values['uniqId']; ?>' href="transactions-view?transaction=<?php echo $values['uniqId']; ?>">
                             <li class="plus">
                                 <?php echo $values['descricao'] ?> - <?php echo $values['tipo-entrada'] ?>
                                 <span>+ R$ <span class="value-amount"><?php echo $values['amount'] ?></span></span>
-                                <button class="delete-btn">x</button>
+                                <button class="delete-btn">X</button>
                             </li>
                         </a>
                     <?php            
@@ -110,11 +110,11 @@
                         foreach($infoTransacions as $key => $values){
                             if($values['tipo-transacao'] == 0){
                     ?>
-                        <a realtimetrasactions='transactions-view?transaction=<?php echo $values['uniqId']; ?>' href="<?php echo INCLUDE_PATH; ?>transactions-view?transaction=<?php echo $values['uniqId']; ?>">
+                        <a realtimetrasactions='transaction=<?php echo $values['uniqId']; ?>' href="transactions-view?transaction=<?php echo $values['uniqId']; ?>">
                             <li class="minus">
                                 <?php echo $values['descricao'] ?>
                                 <span>- R$ <span class="value-amount"><?php echo $values['amount'] ?></span></span>
-                                <button class="delete-btn">x</button>
+                                <button class="delete-btn">X</button>
                             </li>
                         </a>
                     <?php            
@@ -139,7 +139,7 @@
 
                 <div class="form-control w50">
                     <label for="tipo-transacao">Transação</label>
-                    <input type="text" autofocus list="forma-transacao" name="tipo-transacao" id="tipo-transacao" placeholder="Tipo de transação" required autofocus autocomplete="off"/>
+                    <input type="text" autofocus list="forma-transacao" class="tipo-transacao-val" name="tipo-transacao" id="tipo-transacao" placeholder="Tipo de transação" required autofocus autocomplete="off"/>
                     <datalist id="forma-transacao">
                         <?php foreach(Painel::$globalVariables['forma-transacao'] as $values ){ ?>
                             <option value="<?php echo $values; ?>">
@@ -172,12 +172,12 @@
                     </datalist>
                 </div><!-- Forma de Entrada -->
 
-                <div class="form-control w100" id="valor-type">
+                <div class="form-control w100 valor-type">
                     <label for="amount">Valor</label>
                     <input type="text" name="amount" id="amount" placeholder="Valor da transação" required autocomplete="off"/>
                 </div><!-- Valor -->
                 <!-- onkeypress='return event.charCode >= 48 && event.charCode <= 57' -->
-                <div class="form-control" id="entrada-type">
+                <div class="form-control entrada-type">
                     <label for="tipo-entrada">Entrada</label>
                     <input type="text" list="forma-entrada" name="tipo-entrada" id="tipo-entrada" placeholder="Tipo de Entrada" autocomplete="off"/>
                     <datalist id="forma-entrada">
@@ -207,7 +207,6 @@
             </form>
         </div>
     </div>
-</div>
-<div class="pupup-adcionar" id="popup-transactions-mostrar">
-    
+
+    <div class="pupup-adcionar"  id="popup-transactions-mostrar"></div>
 </div>

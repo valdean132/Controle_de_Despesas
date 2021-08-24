@@ -1,4 +1,3 @@
-
 /* Const */
 var include_path = $('base').attr('base');
 
@@ -64,24 +63,30 @@ function Chr(AsciiNum){
 
 /* * * Efect Relogio Reload * * */
 
-$(document).ready(function(){
-    $('.load-container').css('opacity', '0');
-    
-    setTimeout(()=>{
-        $('.load-container').css('display', 'none');
-    }, 500);
-    
-});
+function reloadCr(){
+    $(document).ready(function(){
+        $('.load-container').css('opacity', '0');
+        
+        setTimeout(()=>{
+            $('.load-container').css('display', 'none');
+        }, 500);
+        
+    });
+}
+
+reloadCr();
 
 /* ** */
 
 /* * * Atributos Gerais * * */
-
-$('.value-amount').mask('#.##0,00', {reverse: true});
-$('textarea').on('input', function () {
-    this.style.height = 'auto';
-    this.style.height = (this.scrollHeight) + 'px';
-});
+function geraisAttr(){
+    $('.value-amount').mask('#.##0,00', {reverse: true});
+    $('textarea').on('input', function () {
+        this.style.height = 'auto';
+        this.style.height = (this.scrollHeight) + 'px';
+    });
+}
+geraisAttr();
 
 
 /* ** */
@@ -108,3 +113,4 @@ window.onload = function() {
 }
 
 /* ** */
+

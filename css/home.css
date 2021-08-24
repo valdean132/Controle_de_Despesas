@@ -175,13 +175,13 @@ label {
     font-size: 16px;
     padding: 10px;
     width: 100%;
-    transition: border .5s ease;
     transition: background-color .5s, color .2s, border .5s;
 }
 .adcionar textarea{
     height: 60px;
     resize: vertical;
     overflow: hidden;
+    transition: height .5s;
 }
 
 .adcionar input:focus,
@@ -193,10 +193,10 @@ label {
     border: 1px solid var(--color-plus);
     transition: border .5s;
 }
-#valor-type{
+.valor-type{
     transition: width .5s;
 }
-#entrada-type{
+.entrada-type{
     width: 0;
     white-space: nowrap;
     overflow: hidden;

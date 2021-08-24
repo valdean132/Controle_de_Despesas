@@ -39,8 +39,8 @@
         // Variaveis Globais
         public static $globalVariables = [
             'forma-transacao' => [
-                '0' => 'Entrada',
-                '1' => 'Saída',
+                '0' => 'Saída',
+                '1' => 'Entrada',
             ],
             'tipo-pagamento' => [
                 '0' => 'Dinheiro',
@@ -60,6 +60,11 @@
                 '3' => 'Reposição'
             ]
         ];
+
+        // Pull Type Variables
+        public static function pullVariaveisGlobais($nomeVarial, $posicao){
+            return Painel::$globalVariables[$nomeVarial][$posicao];
+        }
 
         // deixando apenas números
         public static function explodeAmount($amount){

@@ -85,6 +85,9 @@ function geraisAttr(){
         this.style.height = 'auto';
         this.style.height = (this.scrollHeight) + 'px';
     });
+    if($('textarea').val() !== ''){
+        $('textarea').css('height', 'auto');
+    }
 }
 geraisAttr();
 
@@ -100,7 +103,6 @@ function boxAlertOcult(){
     }, 1000);
 }
 setTimeout(()=>{
-
     boxAlertOcult();
 }, 3000);
 
@@ -114,3 +116,63 @@ window.onload = function() {
 
 /* ** */
 
+/* * * Object Generator * * */
+
+const objectGenerator = arraySeparada => {
+    let arrayTable = [];
+    let arrayTableName = [];
+    let objTable = {};
+    let j = 0;
+    for(let i = 1; i <= arraySeparada.length; i += 6){
+        if(arraySeparada[i] !== undefined){
+            arrayTableName[j] = arraySeparada[i];
+            j++;
+        }
+    }
+    for(let i = 3; i <= arraySeparada.length; i += 6){
+        if(arraySeparada[i] !== undefined){
+            arrayTable[j] = arraySeparada[i];
+            j++;
+        }
+    }
+    for(let i = 0; i <= arrayTable.length; i++){
+        if(arrayTableName[i] !== undefined){
+            objTable[arrayTableName[i]] = arrayTable[i+11];
+        }
+    }
+
+    return objTable;
+}
+
+/* ** */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+
+Chegar tema do sistema
+
+const prefersColorScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+function changeTheme(e){
+    if(e.matches){
+        console.log('So sistema é modo dark');
+    }else{
+        console.log('No sistema é modo light');
+    }
+};
+
+*/

@@ -1,8 +1,6 @@
 /* * * Transactions Dinâmico * * */
 dynamicLoadingTransactions();
 
-
-
 /* ** ** */
 
 /* * * Btn DarkMode * * */
@@ -54,14 +52,15 @@ amberMenu.click(()=>{
 /* * * Popup Trasations * * */
 
 
-
-
-
 // Abrir
 const btnTransations = $('.abrir-transations');
 btnTransations.click(()=>{
     
     mostrarPopup();
+    $('[name="uniqId"]').val(geradorUniqId());
+    geraisAttr();
+    btnSubmitTransaction(['acao', 'Adicionar']);
+
     return false;
 });
 
@@ -93,6 +92,7 @@ function mostrarPopup(){
     popupAdicionar.css('display', 'block');
 
     addDiv();
+    $('[name="resp-responsavel"]').prop('disabled', true);
     setTimeout(()=>{
         popupAdicionar.css('opacity', '1');
     }, 500);
@@ -100,6 +100,7 @@ function mostrarPopup(){
     setInterval(()=>{
         verificacaoDeEntrada();
     }, 1000);
+    
 }
 
 // Fechar Popup
@@ -113,8 +114,7 @@ function closePopup(e){
             removeDiv();
         }, 500);
         window.history.pushState('', '', include_path);
-        valuesTransactionsInput({}, false);
-        // $(".form-control").find(':input').val('');
+        valuesTransactionsInput('', false);
         
     }
 }
@@ -161,9 +161,10 @@ function valuesTransactionsInput(infoTransactions, bool){
                     $(`[name=${inputsTable[i]}]`).val(verificTypeEntrada(infoTransactions[k]));
                 }
                 if(inputsTable[i] == 'amount'){
-                    $(`[name=${inputsTable[i]}]`).mask('#.##0,00', {reverse: true});
+                    $(`[name=${inputsTable[i]}]`).val(verifNumber(infoTransactions[k]));
                 }
             }
+
         }
     }
 
@@ -192,9 +193,15 @@ function dynamicLoadingTransactions(){
             url: include_path+'pullAjax/transactions-view.php',
             type: 'GET',
             data: pagina,
+            beforeSend: function(){
+                $('.form-control').find(':input').val('Carregando conteúdo...');
+                $('.form-control').find(':input').prop('disabled', true);
+            },
             success: function(data){
                 infoTransactions = objectGenerator(data.split('"'));
                 valuesTransactionsInput(infoTransactions, true);
+                $(`[name=amount`).mask('#.##0,00', {reverse: true});
+                btnSubmitTransaction(['editar', 'Editar']);
             }
         });
         
@@ -203,4 +210,33 @@ function dynamicLoadingTransactions(){
         return false;
     });
 }
+
+
+// Function Edit Transaction (btnSubmitTransaction)
+function btnSubmitTransaction(nome){
+    $('[type="submit"]').attr('name', nome[0]);
+    $('[type="submit"]').val(nome[1]);
+    
+    if($('[type="submit"]').attr('name') === 'editar'){
+        editTransaction($('[type="submit"]'))
+    }
+}
+
+
+// Function editar (para enviar edção);
+function editTransaction(btnSubmit){
+    btnSubmit.click(()=>{
+        $('.editTransaction').prop('disabled', false);
+        
+        if(btnSubmit.attr('name') === 'enviar-edicao'){
+            window.history.pushState('', '', include_path);
+            return true;
+        }else{
+            btnSubmit.val('Enviar Edição');
+            btnSubmit.attr('name', 'enviar-edicao');
+            return false;
+        }
+    })
+}
+
 /* ** */

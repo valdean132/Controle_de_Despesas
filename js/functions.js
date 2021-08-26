@@ -85,9 +85,6 @@ function geraisAttr(){
         this.style.height = 'auto';
         this.style.height = (this.scrollHeight) + 'px';
     });
-    if($('textarea').val() !== ''){
-        $('textarea').css('height', 'auto');
-    }
 }
 geraisAttr();
 
@@ -146,10 +143,27 @@ const objectGenerator = arraySeparada => {
 
 /* ** */
 
+/* * * Gerador de Id Unico * * */
 
+const geradorUniqId = () => {return new Date().getTime()+'-_-'+(new Date().getTime()*3)}
 
+/* ** */
 
+/* * * Verificar Número * * */
 
+function verifNumber(number){
+    if(number == 0){
+        return '000';
+    }else if(number.length == 1){
+        return '00'+number;
+    }else if(number.length == 2){
+        return '0'+number;
+    }else{
+        return number;
+    }
+}
+
+/* ** */
 
 
 

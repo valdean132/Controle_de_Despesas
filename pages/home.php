@@ -42,6 +42,10 @@
         }
     }
 
+    if(isset($_POST['enviar-edicao'])){
+        $boxAlert = Painel::boxMsg('sucesso', 'A transação Foi editada com Sucesso!!!');
+    }
+
     // Calc Amaunt
     $calcEntrada = Painel::calcAmauntEntrada($infoTransacions);
     $calcSaida = Painel::calcAmauntSaida($infoTransacions);
@@ -54,7 +58,6 @@
 </div>
 
 <h2 class="title-geral">Controle de despesas</h2>
-<h2 class="title-geral">
 </h2>
 <div class="container">
     <div class="mian-RC">
@@ -92,7 +95,7 @@
                         <a realtimetrasactions='transaction=<?php echo $values['uniqId']; ?>' href="transactions-view?transaction=<?php echo $values['uniqId']; ?>">
                             <li class="plus">
                                 <?php echo $values['descricao'] ?> - <?php echo $values['tipo-entrada'] ?>
-                                <span>+ R$ <span class="value-amount"><?php echo $values['amount'] ?></span></span>
+                                <span>+ R$ <span class="value-amount"><?php echo Painel::verifNumber($values['amount']); ?></span></span>
                                 <button class="delete-btn">X</button>
                             </li>
                         </a>
@@ -113,7 +116,7 @@
                         <a realtimetrasactions='transaction=<?php echo $values['uniqId']; ?>' href="transactions-view?transaction=<?php echo $values['uniqId']; ?>">
                             <li class="minus">
                                 <?php echo $values['descricao'] ?>
-                                <span>- R$ <span class="value-amount"><?php echo $values['amount'] ?></span></span>
+                                <span>- R$ <span class="value-amount"><?php echo Painel::verifNumber($values['amount']); ?></span></span>
                                 <button class="delete-btn">X</button>
                             </li>
                         </a>
@@ -164,7 +167,7 @@
 
             <div class="form-control w50">
                 <label for="descricao">Descrição</label>
-                <input type="text" id="descricao" name="descricao" placeholder="Nome da transação" required autocomplete="off"/>
+                <input type="text" id="descricao" name="descricao" class="editTransaction" placeholder="Nome da transação" required autocomplete="off"/>
             </div><!-- nome -->
 
             <div class="form-control w50">
@@ -179,7 +182,7 @@
 
             <div class="form-control w100 valor-type">
                 <label for="amount">Valor</label>
-                <input type="text" name="amount" id="amount" placeholder="Valor da transação" required autocomplete="off"/>
+                <input type="text" name="amount" class="editTransaction" id="amount" placeholder="Valor da transação" required autocomplete="off"/>
             </div><!-- Valor -->
             <!-- onkeypress='return event.charCode >= 48 && event.charCode <= 57' -->
             <div class="form-control entrada-type">
@@ -194,20 +197,20 @@
 
             <div class="form-control w100">
                 <label for="observacoes">Observações</label>
-                <textarea name="observacoes" placeholder="Digite a observação" id="observacoes"></textarea>
+                <textarea name="observacoes" class="editTransaction" placeholder="Digite a observação" id="observacoes"></textarea>
             </div><!-- Forma de Entrada -->
 
             <div class="form-control w50">
                 <label for="data-atual">Horario da Transação</label>
                 <?php $dataAtual = date('Y-m-d') ?>
-                <input type="date" name="data-atual" value="<?php echo $dataAtual ?>" required id="data-atual">
+                <input type="date" name="data-atual" class="editTransaction" value="<?php echo $dataAtual ?>" required id="data-atual">
             </div><!-- Horario da transação -->
 
             <div class="form-control w50">
                 <label for="resp-responsavel">Responsável pela Anotação</label>
                 <input type="text" disabled list="resp" name="resp-responsavel" class="disabled" value="<?php echo $_SESSION['nome']; ?>" id="resp-responsavel"/>
             </div><!-- Forma de Entrada -->
-            <input type="hidden" name="uniqId" value="<?php echo uniqid().'-_-'.uniqid(); ?>">
+            <input type="hidden" name="uniqId" value="">
             <input type="submit" class="btn" name="acao" value="Adicionar">
         </form>
     </div>

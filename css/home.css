@@ -178,7 +178,8 @@ label {
     transition: background-color .5s, color .2s, border .5s;
 }
 .adcionar textarea{
-    height: 60px;
+    height: auto;
+    min-height: 60px;
     resize: vertical;
     overflow: hidden;
     transition: height .5s;

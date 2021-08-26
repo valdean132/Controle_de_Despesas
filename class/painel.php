@@ -48,7 +48,7 @@
                 '2' => 'Cartão de Debito',
                 '3' => 'Pix'
             ],
-            'responsavel-transacao' => [
+            'resp-transacao' => [
                 '0' => 'Sandro Cordovil Rodrigues',
                 '1' => 'Valdean Palmeira de Souza',
                 '2' => 'Samuel Rodrigues',
@@ -105,13 +105,14 @@
         // Verificação de número
         public static function verifNumber($number){
             if($number == 0){
-                $number = '000';
+                return '000';
+            }else if(strlen(abs($number)) == 1){
+                return '00'.abs($number);
             }else if(strlen(abs($number)) == 2){
-                $number = '0'.abs($number);
+                return '0'.abs($number);
             }else{
-                abs($number);
+                return abs($number);
             }
-
-            return $number;
         }
     }
+?>

@@ -168,7 +168,7 @@ function valuesTransactionsInput(infoTransactions, bool){
         }
     }
 
-    
+    // != =>
 
 }
 

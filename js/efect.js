@@ -1,6 +1,6 @@
 /* * * Transactions Dinâmico * * */
 dynamicLoadingTransactions();
-
+rolagemEnd('#entrada, #saida');
 /* ** ** */
 
 /* * * Btn DarkMode * * */
@@ -115,7 +115,7 @@ function closePopup(e){
         }, 500);
         window.history.pushState('', '', include_path);
         valuesTransactionsInput('', false);
-        
+        $('textarea').prop('rows', false);
     }
 }
 
@@ -150,9 +150,14 @@ function valuesTransactionsInput(infoTransactions, bool){
     inputsValue.each(function(i){
             inputsTable[i] = $(this).attr('name');
     })
-
+    $('textarea').on('input', function () {
+        $('textarea').prop('rows', false);
+        this.style.height = 'auto';
+        this.style.height = (this.scrollHeight) + 'px';
+    });
     
-
+    
+    
     for(let i = 0; i <= inputsTable.length; i++){
         for(var k in infoTransactions){
             if(inputsTable[i] == k){
@@ -164,10 +169,15 @@ function valuesTransactionsInput(infoTransactions, bool){
                     $(`[name=${inputsTable[i]}]`).val(verifNumber(infoTransactions[k]));
                 }
             }
-
         }
     }
-
+    
+    if($('textarea').val() != ''){
+        valueTxT = $('textarea').val();
+        sepTxT = valueTxT.split('\n');
+        tamanhoTxT = sepTxT.length;
+        $('textarea').prop('rows', tamanhoTxT);
+    }
     
 
 }
@@ -181,7 +191,6 @@ function verificTypeEntrada(type){
 }
 
 // Loading Transactions Dynamic
-
 function dynamicLoadingTransactions(){
     $('[realtimetrasactions]').click(function(){
         var pagina = $(this).attr('realtimetrasactions');
@@ -200,7 +209,7 @@ function dynamicLoadingTransactions(){
             success: function(data){
                 infoTransactions = objectGenerator(data.split('"'));
                 valuesTransactionsInput(infoTransactions, true);
-                $(`[name=amount`).mask('#.##0,00', {reverse: true});
+                $(`[name=amount]`).mask('#.##0,00', {reverse: true});
                 btnSubmitTransaction(['editar', 'Editar']);
             }
         });
@@ -228,6 +237,7 @@ function editTransaction(btnSubmit){
     btnSubmit.click(()=>{
         $('.editTransaction').prop('disabled', false);
         
+        
         if(btnSubmit.attr('name') === 'enviar-edicao'){
             window.history.pushState('', '', include_path);
             return true;
@@ -236,7 +246,20 @@ function editTransaction(btnSubmit){
             btnSubmit.attr('name', 'enviar-edicao');
             return false;
         }
-    })
+    });
+}
+
+// Rolar pro final da Div
+
+function rolagemEnd(par){
+    let divAtha = $(par);
+    let random = new Date().getTime();
+    var targetOffset = divAtha.height() + random;
+
+    divAtha.animate({
+        scrollTop: targetOffset
+    });
+    
 }
 
 /* ** */

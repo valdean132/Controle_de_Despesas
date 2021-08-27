@@ -49,6 +49,7 @@
             'descricao' => $_POST['descricao'],
             'amount' => Painel::explodeAmount($_POST['amount']),
             'observacoes' => $_POST['observacoes'] === '' ? '' : $_POST['observacoes'],
+            'tipo-entrada' => $_POST['tipo-entrada'],
             'data-atual' => $_POST['data-atual'],
             'nome_tabela' => 'tb.control_transactions',
             'acao' => 'enviar-edicao'
@@ -108,7 +109,7 @@
                         foreach($infoTransacions as $key => $values){
                             if($values['tipo-transacao'] == 1){
                     ?>
-                        <a realtimetrasactions='transaction=<?php echo $values['uniqId']; ?>' href="transactions-view?transaction=<?php echo $values['uniqId']; ?>">
+                        <a realtimetrasactions='transaction=<?php echo $values['uniqId']; ?>' href="?transaction=<?php echo $values['uniqId']; ?>">
                             <li class="plus">
                                 <?php echo $values['descricao'] ?> - <?php echo $values['tipo-entrada'] ?>
                                 <span>+ R$ <span class="value-amount"><?php echo Painel::verifNumber($values['amount']); ?></span></span>
@@ -129,7 +130,7 @@
                         foreach($infoTransacions as $key => $values){
                             if($values['tipo-transacao'] == 0){
                     ?>
-                        <a realtimetrasactions='transaction=<?php echo $values['uniqId']; ?>' href="transactions-view?transaction=<?php echo $values['uniqId']; ?>">
+                        <a realtimetrasactions='transaction=<?php echo $values['uniqId']; ?>' href="?transaction=<?php echo $values['uniqId']; ?>">
                             <li class="minus">
                                 <?php echo $values['descricao'] ?>
                                 <span>- R$ <span class="value-amount"><?php echo Painel::verifNumber($values['amount']); ?></span></span>
@@ -149,9 +150,7 @@
         Adicionar Transação
     </a>
 
-    <div class="pupup-adcionar"></div>
-
-    <!-- <div class="pupup-adcionar"  id="popup-transactions-mostrar"></div> -->
+    <div class="pupup-adcionar"></div><!-- Popup Adcionar -->
 </div>
 
 <div class="container-popup-adcionar" style="display: none;" >
@@ -203,7 +202,7 @@
             <!-- onkeypress='return event.charCode >= 48 && event.charCode <= 57' -->
             <div class="form-control entrada-type">
                 <label for="tipo-entrada">Entrada</label>
-                <input type="text" list="forma-entrada" name="tipo-entrada" id="tipo-entrada" placeholder="Tipo de Entrada" autocomplete="off"/>
+                <input type="text" list="forma-entrada" class="editTransaction" name="tipo-entrada" id="tipo-entrada" placeholder="Tipo de Entrada" autocomplete="off"/>
                 <datalist id="forma-entrada">
                     <?php foreach(Painel::$globalVariables['forma-entrada'] as $values ){ ?>
                         <option value="<?php echo $values; ?>">

@@ -43,7 +43,24 @@
     }
 
     if(isset($_POST['enviar-edicao'])){
-        $boxAlert = Painel::boxMsg('sucesso', 'A transação Foi editada com Sucesso!!!');
+
+        $parameters = [
+            'uniqId' => $_POST['uniqId'],
+            'descricao' => $_POST['descricao'],
+            'amount' => Painel::explodeAmount($_POST['amount']),
+            'observacoes' => $_POST['observacoes'] === '' ? '' : $_POST['observacoes'],
+            'data-atual' => $_POST['data-atual'],
+            'nome_tabela' => 'tb.control_transactions',
+            'acao' => 'enviar-edicao'
+        ];
+        
+        if(!EnviForm::edtTableBd($parameters)){
+            $boxAlert = Painel::boxMsg('sucesso', 'A transação '.$_POST['uniqId'].' foi editada com Sucesso!!!');
+            $infoTransacions = PullBench::tableBench('tb.control_transactions', 'ORDER BY `data-atual`');
+        }else{
+            $boxAlert = Painel::boxMsg('error', 'Erro ao enviar Atualização!!!', 'Tente novamente mais tarde');
+        }
+
     }
 
     // Calc Amaunt
@@ -63,7 +80,6 @@
     <div class="mian-RC">
         <!-- <h4><?php echo $tipoEntrada ?></h4> -->
         <h4>Saldo Atual</h4>
-
         <h2 id="balance" class="balance"><?php echo $operator ?> R$ 
             <span class="value-amount"><?php echo Painel::verifNumber($calcGeral) < 0 ? abs(Painel::verifNumber($calcGeral)) : Painel::verifNumber($calcGeral) ?></span>
         </h2>

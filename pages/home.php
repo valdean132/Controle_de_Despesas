@@ -113,7 +113,7 @@
                             <li class="plus">
                                 <?php echo $values['descricao'] ?> - <?php echo $values['tipo-entrada'] ?>
                                 <span>+ R$ <span class="value-amount"><?php echo Painel::verifNumber($values['amount']); ?></span></span>
-                                <button class="delete-btn">X</button>
+                                <button class="delete-btn" attrdescription="<?php echo $values['descricao'] ?>" >X</button>
                             </li>
                         </a>
                     <?php            
@@ -134,7 +134,7 @@
                             <li class="minus">
                                 <?php echo $values['descricao'] ?>
                                 <span>- R$ <span class="value-amount"><?php echo Painel::verifNumber($values['amount']); ?></span></span>
-                                <button class="delete-btn">X</button>
+                                <button class="delete-btn" attrdescription="<?php echo $values['descricao'] ?>" >X</button>
                             </li>
                         </a>
                     <?php            

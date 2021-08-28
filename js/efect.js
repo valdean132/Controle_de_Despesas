@@ -192,29 +192,37 @@ function verificTypeEntrada(type){
 
 // Loading Transactions Dynamic
 function dynamicLoadingTransactions(){
-    $('[realtimetrasactions]').click(function(){
-        var pagina = $(this).attr('realtimetrasactions');
+    $('[realtimetrasactions]').click(function(e){
+        if(e.target.className === 'plus' || e.target.className === 'minus'){
+            var pagina = $(this).attr('realtimetrasactions');
         
 
-        mostrarPopup();
-        
-        $.ajax({
-            url: include_path+'pullAjax/transactions-view.php',
-            type: 'GET',
-            data: pagina,
-            beforeSend: function(){
-                $('.form-control').find(':input').val('Carregando conteúdo...');
-                $('.form-control').find(':input').prop('disabled', true);
-            },
-            success: function(data){
-                infoTransactions = objectGenerator(data.split('"'));
-                valuesTransactionsInput(infoTransactions, true);
-                $(`[name=amount]`).mask('#.##0,00', {reverse: true});
-                btnSubmitTransaction(['editar', 'Editar']);
-            }
-        });
-        
-        window.history.pushState('', '', '?'+pagina);
+            mostrarPopup();
+            
+            $.ajax({
+                url: include_path+'pullAjax/transactions-view.php',
+                type: 'GET',
+                data: pagina,
+                beforeSend: function(){
+                    $('.form-control').find(':input').val('Carregando conteúdo...');
+                    $('.form-control').find(':input').prop('disabled', true);
+                },
+                success: function(data){
+                    infoTransactions = objectGenerator(data.split('"'));
+                    valuesTransactionsInput(infoTransactions, true);
+                    $(`[name=amount]`).mask('#.##0,00', {reverse: true});
+                    btnSubmitTransaction(['editar', 'Editar']);
+                }
+            });
+            
+            window.history.pushState('', '', '?'+pagina);
+        }
+        if(e.target.className === 'delete-btn'){
+            deletTransaction = $(this).attr('realtimetrasactions');
+            
+        }
+
+
         
         return false;
     });

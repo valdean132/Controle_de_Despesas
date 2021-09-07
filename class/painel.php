@@ -51,7 +51,7 @@
             'resp-transacao' => [
                 '0' => 'Sandro Cordovil Rodrigues',
                 '1' => 'Valdean Palmeira de Souza',
-                '2' => 'Samuel Rodrigues',
+                '2' => 'Sindomar Cordovil Rodrigues'
             ],
             'forma-entrada' => [
                 '0' => 'Fatura',

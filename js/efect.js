@@ -58,6 +58,7 @@ btnTransations.click(()=>{
     
     mostrarPopup();
     $('[name="uniqId"]').val(geradorUniqId());
+    $('.adcionar h3').text('Adicionar transação');
     geraisAttr();
     btnSubmitTransaction(['acao', 'Adicionar']);
 
@@ -143,7 +144,7 @@ function valuesTransactionsInput(infoTransactions, bool){
     let inputs = $(".form-control");
     let inputsValue = $('[name]');
     let inputsTable = [];
-    // let observacoes = $('[name="observacoes"]')
+    // let titleAdcionar = $('.adcionar');
 
     inputs.find(':input').prop('disabled', bool);
 
@@ -161,12 +162,16 @@ function valuesTransactionsInput(infoTransactions, bool){
     for(let i = 0; i <= inputsTable.length; i++){
         for(var k in infoTransactions){
             if(inputsTable[i] == k){
+                
                 $(`[name=${inputsTable[i]}]`).val(infoTransactions[k]);
                 if(inputsTable[i] == 'tipo-transacao'){
                     $(`[name=${inputsTable[i]}]`).val(verificTypeEntrada(infoTransactions[k]));
                 }
                 if(inputsTable[i] == 'amount'){
                     $(`[name=${inputsTable[i]}]`).val(verifNumber(infoTransactions[k]));
+                }
+                if(inputsTable[i] == 'uniqId'){
+                    $('.adcionar h3').text(`Transação ${infoTransactions[k]}`);
                 }
             }
         }

@@ -20,6 +20,9 @@ a{
 .w100{
     width: 100%;
 }
+.clear{
+    clear: both;
+}
 
 input:disabled, textarea:disabled{
     background-color: rgba(0, 0, 0, .1) !important;

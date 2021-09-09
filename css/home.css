@@ -283,6 +283,34 @@ h3.transacao-title{
     border-radius: 2px;
     transition: background-color .5s;
 }
+.date-transaction-span:nth-child(1){
+    margin-top: 10px;
+}
+.date-transaction-span{
+    color: var(--color-four-black);
+    font-size: 13px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: color .5s;
+}
+.date-transaction-span::before{
+    content: '';
+    width: 78%;
+    display: block;
+    position: relative;
+    border-top: 2px solid var(--color-four-black);
+    transition: border-top .5s;
+}
+body.black .date-transaction-span{
+    color: var(--color-four);
+    transition: color .5s;
+}
+body.black .date-transaction-span::before{
+    border-top: 2px solid var(--color-four);
+    transition: border-top .5s;
+}
 .transactions li {
     background-color: var(--backgroundColor-one);
     box-shadow: var(--box-shadow);

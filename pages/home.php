@@ -50,7 +50,7 @@
             'amount' => Painel::explodeAmount($_POST['amount']),
             'observacoes' => $_POST['observacoes'] === '' ? '' : $_POST['observacoes'],
             'tipo-entrada' => $_POST['tipo-entrada'],
-            'data-atual' => $_POST['data-atual'],
+            'a-atualdat' => $_POST['data-atual'],
             'nome_tabela' => 'tb.control_transactions',
             'acao' => 'enviar-edicao'
         ];
@@ -106,8 +106,22 @@
                 <h3>Entrada</h3>
                 <div id="entrada">
                     <?php
+                        $trueDate = false;
                         foreach($infoTransacions as $key => $values){
                             if($values['tipo-transacao'] == 1){
+                                $DateAtualSpan = date('d/m/Y', strtotime($values['data-atual']));
+                                
+                                if($trueDate == true){
+                                    if($dateArmazen != $values['data-atual']){
+                                        $trueDate = false;
+                                        $dateArmazen = '';
+                                    }
+                                }
+                                if($trueDate == false){
+                                    echo '<span class="date-transaction-span">'.$DateAtualSpan.'</span>';
+                                    $dateArmazen = $values['data-atual'];
+                                    $trueDate = true;
+                                }
                     ?>
                         <a realtimetrasactions='transaction=<?php echo $values['uniqId']; ?>' href="?transaction=<?php echo $values['uniqId']; ?>">
                             <li class="plus">
@@ -126,9 +140,23 @@
             <div class="transacao trans-saida">
                 <h3 class="transacao-title">Saída</h3>
                 <div id="saida">
-                <?php
+                    <?php
+                        $trueDate = false;
                         foreach($infoTransacions as $key => $values){
                             if($values['tipo-transacao'] == 0){
+                                $DateAtualSpan = date('d/m/Y', strtotime($values['data-atual']));
+                                
+                                if($trueDate == true){
+                                    if($dateArmazen != $values['data-atual']){
+                                        $trueDate = false;
+                                        $dateArmazen = '';
+                                    }
+                                }
+                                if($trueDate == false){
+                                    echo '<span class="date-transaction-span">'.$DateAtualSpan.'</span>';
+                                    $dateArmazen = $values['data-atual'];
+                                    $trueDate = true;
+                                }
                     ?>
                         <a realtimetrasactions='transaction=<?php echo $values['uniqId']; ?>' href="?transaction=<?php echo $values['uniqId']; ?>">
                             <li class="minus">

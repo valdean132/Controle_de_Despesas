@@ -198,7 +198,7 @@ function verificTypeEntrada(type){
 // Loading Transactions Dynamic
 function dynamicLoadingTransactions(){
     $('[realtimetrasactions]').click(function(e){
-        if(e.target.className === 'plus' || e.target.className === 'minus'){
+        if(e.target.className !== 'delete-btn'){
             var pagina = $(this).attr('realtimetrasactions');
         
 

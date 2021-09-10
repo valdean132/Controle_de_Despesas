@@ -50,7 +50,7 @@
             'amount' => Painel::explodeAmount($_POST['amount']),
             'observacoes' => $_POST['observacoes'] === '' ? '' : $_POST['observacoes'],
             'tipo-entrada' => $_POST['tipo-entrada'],
-            'a-atualdat' => $_POST['data-atual'],
+            'data-atual' => $_POST['data-atual'],
             'nome_tabela' => 'tb.control_transactions',
             'acao' => 'enviar-edicao'
         ];
@@ -87,13 +87,13 @@
         <div class="inc-exp-container">
             <div>
                 <h4>Receitas</h4>
-                <p id="money-plus" class="money plus">R$ 
+                <p id="money-plus" class="money plus"><span>R$</span>
                     <span class="value-amount"><?php echo Painel::verifNumber($calcEntrada); ?></span>
                 </p>
             </div>
             <div>
                 <h4>Despesas</h4>
-                <p id="money-minus" class="money minus">R$ 
+                <p id="money-minus" class="money minus"><span>R$</span> 
                     <span class="value-amount"><?php echo Painel::verifNumber($calcSaida); ?></span>
                 </p>
             </div>
@@ -115,17 +115,23 @@
                                     if($dateArmazen != $values['data-atual']){
                                         $trueDate = false;
                                         $dateArmazen = '';
+                                    }else{
+                                        $cont++;
                                     }
                                 }
                                 if($trueDate == false){
                                     echo '<span class="date-transaction-span">'.$DateAtualSpan.'</span>';
                                     $dateArmazen = $values['data-atual'];
                                     $trueDate = true;
+                                    $cont = 1;
                                 }
                     ?>
                         <a realtimetrasactions='transaction=<?php echo $values['uniqId']; ?>' href="?transaction=<?php echo $values['uniqId']; ?>">
                             <li class="plus">
-                                <?php echo $values['descricao'] ?> - <?php echo $values['tipo-entrada'] ?>
+                                <span>
+                                    <span style="color: #0ff;"><?php echo $cont < 10 ? '0'.$cont.'° ' : $cont.'° ' ?></span>
+                                    <?php echo $values['descricao']; ?> - <?php echo $values['tipo-entrada'] ?>
+                                </span>
                                 <span>+ R$ <span class="value-amount"><?php echo Painel::verifNumber($values['amount']); ?></span></span>
                                 <button class="delete-btn" attrdescription="<?php echo $values['descricao'] ?>" >X</button>
                             </li>
@@ -150,17 +156,23 @@
                                     if($dateArmazen != $values['data-atual']){
                                         $trueDate = false;
                                         $dateArmazen = '';
+                                    }else{
+                                        $cont++;
                                     }
                                 }
                                 if($trueDate == false){
                                     echo '<span class="date-transaction-span">'.$DateAtualSpan.'</span>';
                                     $dateArmazen = $values['data-atual'];
                                     $trueDate = true;
+                                    $cont = 1;
                                 }
                     ?>
                         <a realtimetrasactions='transaction=<?php echo $values['uniqId']; ?>' href="?transaction=<?php echo $values['uniqId']; ?>">
                             <li class="minus">
-                                <?php echo $values['descricao'] ?>
+                                <span>
+                                    <span style="color: #0ff;"><?php echo $cont < 10 ? '0'.$cont.'° ' : $cont.'° ' ?></span>
+                                    <?php echo $values['descricao']; ?>
+                                </span>
                                 <span>- R$ <span class="value-amount"><?php echo Painel::verifNumber($values['amount']); ?></span></span>
                                 <button class="delete-btn" attrdescription="<?php echo $values['descricao'] ?>" >X</button>
                             </li>

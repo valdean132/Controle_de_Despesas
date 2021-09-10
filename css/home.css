@@ -269,6 +269,12 @@ h3.transacao-title{
     border: var(--border-one);
     background-color: var(--backgroundColor-four);
     border-radius: 5px;
+
+    -webkit-user-select: none;  
+    -moz-user-select: none;     
+    -ms-user-select: none;      
+    user-select: none;
+
     overflow: auto;
     transition: background-color .5s, border .5s;
 }
@@ -334,7 +340,9 @@ body.black .date-transaction-span::before{
     border-right: 5px solid var(--color-minus);
     transition: .5s;
 }
-
+.transactions li span:nth-child(1) span{
+    margin-right: 3px;
+}
 .delete-btn {
     cursor: pointer;
     background-color: var(--backgroundColor-three);

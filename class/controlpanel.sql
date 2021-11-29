@@ -27,19 +27,7 @@ SET time_zone = "+00:00";
 -- Estrutura da tabela `tb.control_transactions`
 --
 
-CREATE TABLE `tb.control_transactions` (
-  `id` int(11) NOT NULL,
-  `uniqId` varchar(255) NOT NULL,
-  `tipo-transacao` int(11) NOT NULL,
-  `forma-pagamento` varchar(255) NOT NULL,
-  `descricao` varchar(255) NOT NULL,
-  `resp-transacao` varchar(255) NOT NULL,
-  `amount` int(11) NOT NULL,
-  `tipo-entrada` varchar(255) NOT NULL,
-  `observacoes` text NOT NULL,
-  `data-atual` date NOT NULL,
-  `resp-responsavel` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `tb.control_transactions` (`id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,`uniqId` varchar(255) NOT NULL,`tipo-transacao` int(11) NOT NULL,`forma-pagamento` varchar(255) NOT NULL,`descricao` varchar(255) NOT NULL,`resp-transacao` varchar(255) NOT NULL,`amount` int(11) NOT NULL,`tipo-entrada` varchar(255) NOT NULL,`observacoes` text NOT NULL,`data-atual` date NOT NULL,`resp-responsavel` varchar(255) NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `tb.control_transactions`
@@ -68,22 +56,13 @@ INSERT INTO `tb.control_transactions` (`id`, `uniqId`, `tipo-transacao`, `forma-
 -- Estrutura da tabela `tb.control_user`
 --
 
-CREATE TABLE `tb.control_user` (
-  `id` int(11) NOT NULL,
-  `user` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `themeMode` int(11) NOT NULL,
-  `img` varchar(255) NOT NULL,
-  `cargo` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `tb.control_user` ( `id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT, `user` varchar(255) NOT NULL, `password` varchar(255) NOT NULL, `name` varchar(255) NOT NULL, `themeMode` int(11) NOT NULL, `img` varchar(255) NOT NULL, `cargo` int(11) NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `tb.control_user`
 --
 
-INSERT INTO `tb.control_user` (`id`, `user`, `password`, `name`, `themeMode`, `img`, `cargo`) VALUES
-(1, 'valdean', 'VmFsZGVhbg==', 'Valdean Souza', 0, '', 2);
+INSERT INTO `tb.control_user` (`id`, `user`, `password`, `name`, `themeMode`, `img`, `cargo`) VALUES (NULL, 'valdean', 'VmFsZGVhbg==', 'Valdean Souza', 0, '', 2);
 
 --
 -- Índices para tabelas despejadas

@@ -5,7 +5,11 @@
 
         // Puxar dados gerais do Banco de dados (dinâmico).
         public static function tableBench($nameTable, $adcionais = null){
-            $sql = MySql::conectar()->prepare("SELECT * FROM `$nameTable` $adcionais");
+            if($adcionais == null)
+                $sql = MySql::conectar()->prepare("SELECT * FROM `$nameTable`");
+            else
+                $sql = MySql::conectar()->prepare("SELECT * FROM `$nameTable` $adcionais");
+
             $sql->execute();
 
             return $sql->fetchAll();

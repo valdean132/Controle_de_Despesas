@@ -16,5 +16,5 @@
     define('HOST', 'localhost');
     define('USER', 'root');
     define('PASSWORD','');
-    define('DATABASER', 'controlpanel-teste');
+    define('DATABASER', 'controlpanel');
     

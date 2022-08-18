@@ -49,9 +49,7 @@
                 '3' => 'Pix'
             ],
             'resp-transacao' => [
-                '0' => 'Sandro Cordovil Rodrigues',
                 '1' => 'Valdean Palmeira de Souza',
-                '2' => 'Sindomar Cordovil Rodrigues'
             ],
             'forma-entrada' => [
                 '0' => 'Fatura',

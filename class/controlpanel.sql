@@ -20,7 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `controlpanel`
 --
-
+-- mysql -u root -p controlpanel < C:\xampp\htdocs\Controle_de_Despesas\class\exportbd_controlpanel.sql
+-- mysqldump -u root -p controlpanel > C:\xampp\htdocs\Controle_de_Despesas\class\exportbd_controlpanel.sql
 -- --------------------------------------------------------
 
 --

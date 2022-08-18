@@ -1,5 +1,7 @@
 /* * * Transactions Dinâmico * * */
-dynamicLoadingTransactions();
+$(function(){
+    dynamicLoadingTransactions();
+});
 rolagemEnd('#entrada, #saida');
 /* ** ** */
 
@@ -197,6 +199,50 @@ function verificTypeEntrada(type){
 
 // Loading Transactions Dynamic
 function dynamicLoadingTransactions(){
+    var url_atual = window.location.href.split('?')[1];
+    if(url_atual != undefined){
+
+        mostrarPopup();
+            
+        $.ajax({
+            url: include_path+'pullAjax/transactions-view.php',
+            type: 'GET',
+            data: url_atual,
+            beforeSend: function(){
+                $('.form-control').find(':input').val('Carregando conteúdo...');
+                $('.form-control').find(':input').prop('disabled', true);
+            },
+            error: function(data){
+                console.log(data)
+            },
+            success: function(data){
+                infoTransactions = JSON.parse(data);
+
+                valuesTransactionsInput(infoTransactions, true);
+                $(`[name=amount]`).mask('#.##0,00', {reverse: true});
+                btnSubmitTransaction(['editar', 'Editar']);
+            }
+        });
+
+        let setlimpar = setInterval(()=>{
+            var verificUrl = window.location.href.split('?')[1]
+            if(verificUrl == undefined){
+                popupAdicionar.css('opacity', '0');
+                setTimeout(()=>{
+                    popupAdicionar.css('display', 'none');
+                    removeDiv();
+                }, 500);
+                window.history.pushState('', '', include_path);
+                valuesTransactionsInput('', false);
+                $('textarea').prop('rows', false);
+
+                clearInterval(setlimpar);
+            }
+        }, 1000)
+    }
+
+
+
     $('[realtimetrasactions]').click(function(e){
         if(e.target.className !== 'delete-btn'){
             var pagina = $(this).attr('realtimetrasactions');
@@ -212,8 +258,12 @@ function dynamicLoadingTransactions(){
                     $('.form-control').find(':input').val('Carregando conteúdo...');
                     $('.form-control').find(':input').prop('disabled', true);
                 },
+                error: function(data){
+                    console.log(data)
+                },
                 success: function(data){
-                    infoTransactions = objectGenerator(data.split('"'));
+                    infoTransactions = JSON.parse(data);
+
                     valuesTransactionsInput(infoTransactions, true);
                     $(`[name=amount]`).mask('#.##0,00', {reverse: true});
                     btnSubmitTransaction(['editar', 'Editar']);
@@ -221,13 +271,39 @@ function dynamicLoadingTransactions(){
             });
             
             window.history.pushState('', '', '?'+pagina);
+            let setlimpar = setInterval(()=>{
+                var verificUrl = window.location.href.split('?')[1]
+                if(verificUrl == undefined){
+                    popupAdicionar.css('opacity', '0');
+                    setTimeout(()=>{
+                        popupAdicionar.css('display', 'none');
+                        removeDiv();
+                    }, 500);
+                    window.history.pushState('', '', include_path);
+                    valuesTransactionsInput('', false);
+                    $('textarea').prop('rows', false);
+
+                    clearInterval(setlimpar);
+                }
+            }, 1000)
         }
+
         if(e.target.className === 'delete-btn'){
-            deletTransaction = $(this).attr('realtimetrasactions');
-            
+            let deletTransaction = $(this).attr('realtimetrasactions');
+            let deleteTr = deletTransaction+"&delete='transaction'";
+
+            $.ajax({
+                url: include_path+'pullAjax/transactions-view.php',
+                type: 'GET',
+                data: deleteTr,
+                error: function(data){
+                    console.log(data)
+                },
+                success: function(data){
+                    location.reload();
+                }
+            });
         }
-
-
         
         return false;
     });

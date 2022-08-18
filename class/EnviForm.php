@@ -41,4 +41,11 @@
                 
             }
         }
+
+        // Deletando dados
+        public static function deleteInfo($delete){
+
+            $sql = MySql::conectar()->prepare("DELETE FROM `tb.control_transactions` WHERE `uniqId` = ?");
+            $sql->execute(array($delete));
+        }
     }

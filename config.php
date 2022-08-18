@@ -15,6 +15,6 @@
     /* Conexão com o Banco de Dados */
     define('HOST', 'localhost');
     define('USER', 'root');
-    define('PASSWORD','');
+    define('PASSWORD','15987');
     define('DATABASER', 'controlpanel');
     

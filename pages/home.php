@@ -1,6 +1,6 @@
-<div class="icons">
-        <div class="delete-control"></div><!-- Deletar Tudo -->
-    </div><!-- Icons -->
+<!-- <div class="icons">
+    <div class="delete-control"></div>
+</div> -->
 <div class="box-delete">
     <div class="conf-delet">
         <h2>Deseja Deletar as anotações de ENTRADA e SAÍDA</h2>

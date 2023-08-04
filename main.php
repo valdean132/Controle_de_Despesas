@@ -17,12 +17,13 @@
             echo '<link rel="stylesheet" href="'.INCLUDE_PATH.'css/home.css" />';
         }
     ?>
+    <link rel="stylesheet" href="<?php echo INCLUDE_PATH; ?>css/media-query.css">
     <link rel="sortcut icon" href="financeiro.ico" type="image/x-icon" />
     <title>Controle de despesas</title>
 </head>
 <body>
     <base base="<?php echo INCLUDE_PATH; ?>">
-    <div class="menu-container">
+    <!-- <div class="menu-container">
         <div class="btn-menu">
             <div class="barrinhas-menu">
                 <span class="barra-before"></span>
@@ -32,7 +33,7 @@
             <h2>
                 Menu
             </h2>
-        </div><!-- btn-menu -->
+        </div>
         <nav>
             <ul>
                 <li><a realtime='perfil' href="<?php echo INCLUDE_PATH; ?>perfil"><i class=" fa fa-pencil-square-o"></i>Perfil</a></li>
@@ -40,7 +41,7 @@
                 <li><a realtime='' href="aaaa"><i class=" fa fa-address-card-o"></i>Menu 3</a></li>
             </ul>
         </nav>
-    </div><!-- Menu Container -->
+    </div>-->
 
     <div class="icons-main loggout">
         <a href="<?php echo INCLUDE_PATH; ?>?loggout"></a>

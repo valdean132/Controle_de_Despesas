@@ -1,6 +1,7 @@
 /* * * Transactions Dinâmico * * */
 $(function(){
     dynamicLoadingTransactions();
+    viewsTransactions();
 });
 rolagemEnd('#entrada, #saida');
 /* ** ** */
@@ -55,6 +56,7 @@ amberMenu.click(()=>{
 
 
 // Abrir
+/* Adicionar ou visualizar */
 const btnTransations = $('.abrir-transations');
 btnTransations.click(()=>{
     
@@ -66,6 +68,10 @@ btnTransations.click(()=>{
 
     return false;
 });
+
+
+
+
 
 // Fechar 
 
@@ -339,7 +345,6 @@ function editTransaction(btnSubmit){
 }
 
 // Rolar pro final da Div
-
 function rolagemEnd(par){
     let divAtha = $(par);
     let random = new Date().getTime();
@@ -349,6 +354,36 @@ function rolagemEnd(par){
         scrollTop: targetOffset
     });
     
+}
+
+function viewsTransactions(){
+    $('.btn-transactions').click(function(){
+        let popupAdicionar = $('.contain-transactions');
+
+        popupAdicionar.css('display', 'block');
+        $(`[popup="${$(this).attr('href')}"]`).css('display', 'block');
+
+        setTimeout(()=>{
+            popupAdicionar.css('opacity', '1');
+        }, 500);
+
+        return false;
+    });
+    $('[popup-x="fechar"]').click(function(e){
+        console.log()
+        if(e.target.attributes['popup-x'] != undefined){
+
+            let popupAdicionar = $('.contain-transactions');
+            popupAdicionar.css('opacity', '0');
+    
+            
+            setTimeout(()=>{
+                popupAdicionar.css('display', 'none');
+                $(`[popup]`).css('display', 'none');
+            }, 500);
+        }
+    });
+
 }
 
 /* ** */

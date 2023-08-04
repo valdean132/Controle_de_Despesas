@@ -7,6 +7,9 @@ body {
     margin: 0;
 }
 h2.title-geral{
+    width: 98%;
+    text-align: center;
+
     position: absolute;
     left: 50%;
     top: 5px;
@@ -26,7 +29,8 @@ h2.title-geral{
     max-width: 1080px;
 }
 .mian-RC{
-    width: 400px;
+    max-width: 400px;
+    width: 100%;
     position: absolute;
     top: 45px;
     left: 50%;
@@ -50,18 +54,21 @@ h3 {
 }
 
 h4 {
+    width: 100%;
+
     text-align: center;
     margin: 0;
     text-transform: uppercase;
 }
 
 .inc-exp-container {
+    width: 90%;
     background-color: var(--backgroundColor-one);
     box-shadow: var(--box-shadow);
     padding: 20px;
     display: flex;
     justify-content: space-between;
-    margin: 20px 0;
+    margin: 20px auto;
     border-radius: 5px;
     transition: background-color .5s, box-shadow .5s;
 }
@@ -203,7 +210,9 @@ label {
     overflow: hidden;
     transition: width .5s;
 }
-.adcionar input.btn, .abrir-transations {
+.adcionar input.btn, .abrir-transations,
+.abrir-entradas,
+.abrir-saidas {
     cursor: pointer;
     outline: none;
     border: 0 !important;
@@ -225,17 +234,34 @@ label {
     margin: 20px auto;
 }
 
-.abrir-transations{
+.abrir-transations,
+.abrir-entradas,
+.abrir-saidas{
     position: absolute;
     width: 250px;
     height: 40px;
-    top: 60%;
+    bottom: -30px;
     left: 50%;
     transform: translate(-50%, -60%);
     text-transform: uppercase;
 }
+.abrir-entradas{
+    bottom: 70px;
 
-.adcionar input.btn:hover, .abrir-transations:hover{
+    display: none;
+}
+.abrir-saidas{
+    bottom: 20px;
+
+    display: none;
+}
+.contain-transactions .fechar-popup{
+    display: none;
+}
+
+.adcionar input.btn:hover, .abrir-transations:hover,
+.abrir-entradas:hover,
+.abrir-saidas:hover{
     background-color: var(--backgroundColorHover-two);
     transition: background-color .5s;
 }
@@ -246,7 +272,7 @@ label {
     margin: 0 auto;
 }
 .transacao{
-    width: 430px;
+    width: 490px;
     top: 160px;
 }
 .trans-entrada{
@@ -262,7 +288,7 @@ h3.transacao-title{
 }
 #entrada, #saida{
     height: auto;
-    max-height: 250px;
+    max-height: 400px;
     background-color: #ccc;
     margin-bottom: 40px;
     padding: 0 30px;
@@ -342,6 +368,9 @@ body.black .date-transaction-span::before{
 }
 .transactions li span:nth-child(1) span{
     margin-right: 3px;
+}
+.transactions li span:nth-child(1){
+    margin-right: 5px;
 }
 .delete-btn {
     cursor: pointer;

@@ -1,21 +1,3 @@
-<!-- <div class="icons">
-    <div class="delete-control"></div>
-</div> -->
-<div class="box-delete">
-    <div class="conf-delet">
-        <h2>Deseja Deletar as anotações de ENTRADA e SAÍDA</h2>
-        <div class="conf-btn">
-            <a class="cont-btn-wraper conf-sim" href="">Sim</a>
-            <a class="cont-btn-wraper conf-nao" href="">Não</a>
-        </div><!-- Conf BTN -->
-    </div><!-- Conf Delet -->
-</div><!-- Box Delet -->
-<div class="box-delete box-msg-conf">
-    <div class="conf-delet msg-conf">
-        <h2>As anotações de ENTRADA e SAÍDA foram deletadas com SUCESSO</h2>
-    </div><!-- Conf Delet -->
-</div>
-
 <?php
     $infoTransacions = PullBench::tableBench('tb.control_transactions', 'ORDER BY `data-atual`');
     $boxAlert = '';
@@ -75,7 +57,7 @@
     <?php echo $boxAlert; ?>
 </div>
 
-<h2 class="title-geral">Controle de despesas</h2>
+<h2 class="title-geral">Controle de caixa</h2>
 </h2>
 <div class="container">
     <div class="mian-RC">
@@ -102,90 +84,103 @@
 
     <div class="entrada-saida">
         <ul id="transactions" class="transactions">
-            <div class="transacao trans-entrada">
-                <h3>Entrada</h3>
-                <div id="entrada">
-                    <?php
-                        $trueDate = false;
-                        foreach($infoTransacions as $key => $values){
-                            if($values['tipo-transacao'] == 1){
-                                $DateAtualSpan = date('d/m/Y', strtotime($values['data-atual']));
-                                
-                                if($trueDate == true){
-                                    if($dateArmazen != $values['data-atual']){
-                                        $trueDate = false;
-                                        $dateArmazen = '';
-                                    }else{
-                                        $cont++;
+            <a class="btn abrir-entradas btn-transactions" href="entrada">
+                Abrir Entradas
+            </a>
+            <a class="btn abrir-saidas btn-transactions" href="saida">
+                Abrir Saídas
+            </a>
+            <div class="contain-transactions" popup-x="fechar">
+                
+
+                <div class="transacao trans-entrada" popup="entrada">
+                    <h3>Entrada</h3>
+                    <div id="entrada">
+                        <?php
+                            $trueDate = false;
+                            foreach($infoTransacions as $key => $values){
+                                if($values['tipo-transacao'] == 1){
+                                    $DateAtualSpan = date('d/m/Y', strtotime($values['data-atual']));
+                                    
+                                    if($trueDate == true){
+                                        if($dateArmazen != $values['data-atual']){
+                                            $trueDate = false;
+                                            $dateArmazen = '';
+                                        }else{
+                                            $cont++;
+                                        }
                                     }
-                                }
-                                if($trueDate == false){
-                                    echo '<span class="date-transaction-span">'.$DateAtualSpan.'</span>';
-                                    $dateArmazen = $values['data-atual'];
-                                    $trueDate = true;
-                                    $cont = 1;
-                                }
-                    ?>
-                        <a realtimetrasactions='transaction=<?php echo $values['uniqId']; ?>' href="?transaction=<?php echo $values['uniqId']; ?>">
-                            <li class="plus">
-                                <span>
-                                    <span style="color: #0ff;"><?php echo $cont < 10 ? '0'.$cont.'° ' : $cont.'° ' ?></span>
-                                    <?php echo $values['descricao']; ?> - <?php echo $values['tipo-entrada'] ?>
-                                </span>
-                                <span>+ R$ <span class="value-amount"><?php echo Painel::verifNumber($values['amount']); ?></span></span>
-                                <button class="delete-btn" attrdescription="<?php echo $values['descricao'] ?>" >X</button>
-                            </li>
-                        </a>
-                    <?php            
-                            }
-                        }
-                    ?>
-                    
-                </div>
-            </div>
-            <div class="transacao trans-saida">
-                <h3 class="transacao-title">Saída</h3>
-                <div id="saida">
-                    <?php
-                        $trueDate = false;
-                        foreach($infoTransacions as $key => $values){
-                            if($values['tipo-transacao'] == 0){
-                                $DateAtualSpan = date('d/m/Y', strtotime($values['data-atual']));
-                                
-                                if($trueDate == true){
-                                    if($dateArmazen != $values['data-atual']){
-                                        $trueDate = false;
-                                        $dateArmazen = '';
-                                    }else{
-                                        $cont++;
+                                    if($trueDate == false){
+                                        echo '<span class="date-transaction-span">'.$DateAtualSpan.'</span>';
+                                        $dateArmazen = $values['data-atual'];
+                                        $trueDate = true;
+                                        $cont = 1;
                                     }
+                        ?>
+                            <a realtimetrasactions='transaction=<?php echo $values['uniqId']; ?>' href="?transaction=<?php echo $values['uniqId']; ?>">
+                                <li class="plus">
+                                    <span>
+                                        <span style="color: #0ff;"><?php echo $cont < 10 ? '0'.$cont.'° ' : $cont.'° ' ?></span>
+                                        <?php echo $values['descricao']; ?> - <?php echo $values['tipo-entrada'] ?>
+                                    </span>
+                                    <span>+ R$ <span class="value-amount"><?php echo Painel::verifNumber($values['amount']); ?></span></span>
+                                    <button class="delete-btn" attrdescription="<?php echo $values['descricao'] ?>" >X</button>
+                                </li>
+                            </a>
+                        <?php            
                                 }
-                                if($trueDate == false){
-                                    echo '<span class="date-transaction-span">'.$DateAtualSpan.'</span>';
-                                    $dateArmazen = $values['data-atual'];
-                                    $trueDate = true;
-                                    $cont = 1;
-                                }
-                    ?>
-                        <a realtimetrasactions='transaction=<?php echo $values['uniqId']; ?>' href="?transaction=<?php echo $values['uniqId']; ?>">
-                            <li class="minus">
-                                <span>
-                                    <span style="color: #0ff;"><?php echo $cont < 10 ? '0'.$cont.'° ' : $cont.'° ' ?></span>
-                                    <?php echo $values['descricao']; ?>
-                                </span>
-                                <span>- R$ <span class="value-amount"><?php echo Painel::verifNumber($values['amount']); ?></span></span>
-                                <button class="delete-btn" attrdescription="<?php echo $values['descricao'] ?>" >X</button>
-                            </li>
-                        </a>
-                    <?php            
                             }
-                        }
-                    ?>
+                        ?>
+                        
+                    </div>
                 </div>
+                <div class="transacao trans-saida" popup="saida">
+                    <h3 class="transacao-title">Saída</h3>
+                    <div id="saida">
+                        <?php
+                            $trueDate = false;
+                            foreach($infoTransacions as $key => $values){
+                                if($values['tipo-transacao'] == 0){
+                                    $DateAtualSpan = date('d/m/Y', strtotime($values['data-atual']));
+                                    
+                                    if($trueDate == true){
+                                        if($dateArmazen != $values['data-atual']){
+                                            $trueDate = false;
+                                            $dateArmazen = '';
+                                        }else{
+                                            $cont++;
+                                        }
+                                    }
+                                    if($trueDate == false){
+                                        echo '<span class="date-transaction-span">'.$DateAtualSpan.'</span>';
+                                        $dateArmazen = $values['data-atual'];
+                                        $trueDate = true;
+                                        $cont = 1;
+                                    }
+                        ?>
+                            <a realtimetrasactions='transaction=<?php echo $values['uniqId']; ?>' href="?transaction=<?php echo $values['uniqId']; ?>">
+                                <li class="minus">
+                                    <span>
+                                        <span style="color: #0ff;"><?php echo $cont < 10 ? '0'.$cont.'° ' : $cont.'° ' ?></span>
+                                        <?php echo $values['descricao']; ?>
+                                    </span>
+                                    <span>- R$ <span class="value-amount"><?php echo Painel::verifNumber($values['amount']); ?></span></span>
+                                    <button class="delete-btn" attrdescription="<?php echo $values['descricao'] ?>" >X</button>
+                                </li>
+                            </a>
+                        <?php            
+                                }
+                            }
+                        ?>
+                    </div>
+                </div>
+                <div class="fechar-popup" popup-x="fechar"></div>
             </div>
         </ul>
     </div>
     
+    <LT />
+
     <a class="btn abrir-transations" href="">
         Adicionar Transação
     </a>
@@ -256,10 +251,10 @@
             </div><!-- Forma de Entrada -->
 
             <div class="form-control w50">
-                <label for="data-atual">Horario da Transação</label>
+                <label for="data-atual">Data da Transação</label>
                 <?php $dataAtual = date('Y-m-d') ?>
                 <input type="date" name="data-atual" class="editTransaction" value="<?php echo $dataAtual ?>" required id="data-atual">
-            </div><!-- Horario da transação -->
+            </div><!-- Data da Transação -->
 
             <div class="form-control w50">
                 <label for="resp-responsavel">Responsável pela Anotação</label>

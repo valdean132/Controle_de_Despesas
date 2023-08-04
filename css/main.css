@@ -211,10 +211,12 @@ body.black .centerload .p{
     /* background-color: red; */
 }
 .loggout{
-    top: 30px;
-    right: 30px;
+    bottom: 30px;
+    left: 30px;
+    z-index: 10;
 }
 .icons-dark{
+    z-index: 10;
     bottom: 30px;
     right: 30px;
 }

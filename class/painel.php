@@ -39,23 +39,22 @@
         // Variaveis Globais
         public static $globalVariables = [
             'forma-transacao' => [
-                '0' => 'Saída',
-                '1' => 'Entrada',
+                '0' => 'Entrada',
+                '1' => 'Saída',
             ],
             'tipo-pagamento' => [
                 '0' => 'Dinheiro',
-                '1' => 'Cartão de Credito',
-                '2' => 'Cartão de Debito',
-                '3' => 'Pix'
+                '1' => 'Pix',
+                '2' => 'Cartão de Credito',
+                '3' => 'Cartão de Debito',
             ],
             'resp-transacao' => [
-                '1' => 'Valdean Palmeira de Souza',
+                '0' => 'Júnior',
+                '1' => 'Maúde',
             ],
             'forma-entrada' => [
-                '0' => 'Fatura',
-                '1' => 'Instalação',
-                '2' => 'Emprestimo',
-                '3' => 'Reposição'
+                '0' => 'Mensalidade',
+                '1' => 'Outros',
             ]
         ];
 

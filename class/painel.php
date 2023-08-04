@@ -49,7 +49,7 @@
                 '3' => 'Cartão de Debito',
             ],
             'resp-transacao' => [
-                '0' => 'Júnior',
+                '0' => 'Jaime Júnior',
                 '1' => 'Maúde',
             ],
             'forma-entrada' => [

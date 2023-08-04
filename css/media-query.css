@@ -57,7 +57,9 @@
     .abrir-saidas{
         display: block;
     }
-
+    .delete-btn{
+        opacity: 1;
+    }
     .adcionar{
         width: 98%;
     }

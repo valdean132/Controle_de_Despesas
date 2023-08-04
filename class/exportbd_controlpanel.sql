@@ -64,7 +64,7 @@ CREATE TABLE `tb.control_user` (
   `img` varchar(255) NOT NULL,
   `cargo` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+);
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -73,7 +73,7 @@ CREATE TABLE `tb.control_user` (
 
 LOCK TABLES `tb.control_user` WRITE;
 /*!40000 ALTER TABLE `tb.control_user` DISABLE KEYS */;
-INSERT INTO `tb.control_user` VALUES (2,'valdean','VmFsZGVhbg==','Valdean Souza',0,'',2);
+INSERT INTO `tb.control_user` VALUES (null,'valdean','VmFsZGVhbg==','Valdean Souza',0,'',2);
 /*!40000 ALTER TABLE `tb.control_user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
